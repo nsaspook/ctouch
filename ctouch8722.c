@@ -132,7 +132,7 @@ void rx_handler(void);
 volatile int CATCH = FALSE, i = 0, y = 0, LED_UP = TRUE, z = 0, TOUCH = FALSE, UNTOUCH = FALSE,
 	CATCH46 = FALSE, CATCH37 = FALSE, TSTATUS = FALSE, cdelay = 900, NEEDSETUP = FALSE,
 	CRTFIX_DEBUG = 1, DATA1 = FALSE, DATA2 = FALSE, speedup = 0, LEARN1 = FALSE,
-	LEARN2 = FALSE, CORNER1 = FALSE, CORNER2 = FALSE;
+	LEARN2 = FALSE, CORNER1 = FALSE, CORNER2 = FALSE, CAM = FALSE;
 volatile unsigned int touch_good = 0;
 volatile long j = 0, alive_led = 0, touch_count = 0, resync_count = 0, rawint_count = 0, status_count = 0;
 
@@ -347,7 +347,7 @@ void wdtdelay(unsigned int delay)
 	};
 }
 
-void touch_eep(void)
+void touch_cam(void)
 {
 	//	check for 4 corner presses
 	if (CATCH) {
@@ -355,24 +355,36 @@ void touch_eep(void)
 			touch_corner1++;
 		} else {
 			touch_corner1 = 0;
+			if (CAM) {
+				CATCH = FALSE;
+				CAM = FALSE;
+			}
 		};
 
 		if ((elobuf[0] >= (unsigned char) 0x72) && (elobuf[1] >= (unsigned char) 0x5a)) { // check for LEARN2
 			touch_corner2++;
 		} else {
 			touch_corner2 = 0;
+			if (CAM) {
+				CATCH = FALSE;
+				CAM = FALSE;
+			}
 		};
 	};
-	if (touch_corner1 >= (unsigned int) 2) { // we have 3 corner presses 
-
-	} else {
-		return;
+	if (touch_corner1 >= (unsigned int) 2) { // we have several corner presses 
+		LATEbits.LATE1 = !LATEbits.LATE1; // VGA/CAM
+		if (LATEbits.LATE1) {
+			CATCH = FALSE;
+			CAM = TRUE;
+		}
 	};
 
-	if (touch_corner2 >= (unsigned int) 2) { // we have 3 corner presses
-
-	} else {
-		return;
+	if (touch_corner2 >= (unsigned int) 2) { // we have several corner presses
+		LATEbits.LATE2 = !LATEbits.LATE2; // VGA/CAM
+		if (LATEbits.LATE2) {
+			CATCH = FALSE;
+			CAM = TRUE;
+		}
 	};
 
 }
@@ -505,7 +517,7 @@ void main(void)
 	}
 
 	PORTJ = 0xff; // set leds to off at powerup/reset
-	PORTE = 0x0f;
+	PORTE = 0xff;
 	DATA1 = FALSE; // reset COMM flags.
 	DATA2 = FALSE;
 	// leds from outputs to ground via resistor.
@@ -644,7 +656,7 @@ void main(void)
 
 		if (CATCH46) { // flag to send report to host
 			PORTJbits.RJ0 = 1; // flash status led
-			touch_eep();
+			touch_cam();
 
 			if (CATCH) { // send the buffered touch report
 				Delay10KTCYx(75); // 75 ms
