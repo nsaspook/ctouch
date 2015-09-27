@@ -217,10 +217,18 @@ void rx_handler(void)
 	/* Get the character received from the USARTs */
 
 	if (PIR3bits.RC2IF) { // is data from touchscreen
+		LATEbits.LATE4 = !LATEbits.LATE4;
+		LATEbits.LATE1 = 0;
+		if (CAM) {
+			while (TRUE) { // lockup for reboot
+				touch_good++;
+			};
+		}
 		if (RCSTA2bits.OERR) {
 			RCSTA2bits.CREN = 0; //	clear overrun
 			RCSTA2bits.CREN = 1; // re-enable
 		}
+		c = RCREG2; // read data from touchscreen
 		if (do_cap) {
 			if (scrn_ptr < CAP_SIZE) {
 				scrn_rec[scrn_ptr] = RCREG2; // read data from touchscreen
@@ -230,19 +238,17 @@ void rx_handler(void)
 				scrn_ptr++;
 				LATJbits.LATJ2 = !LATJbits.LATJ2; // flash  led
 			} else {
-				c = RCREG2;
 				scrn_write = TRUE;
 				LATJbits.LATJ4 = !LATJbits.LATJ4; // flash  led
 			}
 		} else {
-			c = RCREG2; // read data from touchscreen
 			touch_good++; // chars received before a status report
-			LATEbits.LATE0 = !LATEbits.LATE0; // flash external led
+			LATEbits.LATE0 = 1; // flash external led
 			LATEbits.LATE7 = LATEbits.LATE0; // flash external led
 			DATA2 = TRUE; // usart is connected to data
 			if (TOUCH) {
 				elobuf[i++] = c;
-				LATEbits.LATE0 = !LATEbits.LATE0; // flash external led
+				LATEbits.LATE0 = 1; // flash external led
 				LATEbits.LATE7 = LATEbits.LATE0; // flash external led
 				if (c == 0xFF && TOUCH) { // end of report
 					CATCH = TRUE;
@@ -256,7 +262,7 @@ void rx_handler(void)
 				restart_delay = 0;
 				CATCH = FALSE;
 				i = 0;
-				PORTEbits.RE0 = !PORTEbits.RE0; // flash external led
+				PORTEbits.RE0 = 1; // flash external led
 				PORTEbits.RE7 = PORTEbits.RE0; // flash external led
 			};
 			if (c == 0xF5) { // looks like a status report
@@ -264,7 +270,7 @@ void rx_handler(void)
 				restart_delay = 0;
 				PORTJbits.RJ6 = 0; // led 6 touch-screen connected
 				speedup = -10000;
-				PORTEbits.RE0 = !PORTEbits.RE0; // flash external led
+				PORTEbits.RE0 = 1; // flash external led
 				PORTEbits.RE7 = PORTEbits.RE0; // flash external led
 			};
 			if (i > (BUF_SIZE - 2)) {
@@ -273,7 +279,7 @@ void rx_handler(void)
 				CATCH = FALSE;
 			};
 			if (touch_good > GOOD_MAX) { // check for max count and no host to get touch data
-				PORTEbits.RE0 = 1; // LED on
+				PORTEbits.RE0 = 1; // LED off
 				PORTEbits.RE7 = PORTEbits.RE0;
 				while (TRUE) { // lockup for reboot
 					touch_good++;
@@ -284,6 +290,7 @@ void rx_handler(void)
 
 
 	if (PIR1bits.RC1IF) { // is data from host
+		LATEbits.LATE3 = !LATEbits.LATE3;
 		if (RCSTA1bits.OERR) {
 			RCSTA1bits.CREN = 0; //	clear overrun
 			RCSTA1bits.CREN = 1; // re-enable
@@ -349,44 +356,24 @@ void wdtdelay(unsigned int delay)
 
 void touch_cam(void)
 {
-	//	check for 4 corner presses
+
+	//	check for corner presses
 	if (CATCH) {
-		if ((elobuf[0] <= (unsigned char) 0x06) && (elobuf[1] >= (unsigned char) 0x5a)) { // check for LEARN1
+		if ((elobuf[0] <= (unsigned char) 0x06) && (elobuf[1] >= (unsigned char) 0x5a)) { // check for SPOT1
 			touch_corner1++;
-		} else {
-			touch_corner1 = 0;
-			if (CAM) {
-				CATCH = FALSE;
-				CAM = FALSE;
-			}
 		};
 
-		if ((elobuf[0] >= (unsigned char) 0x72) && (elobuf[1] >= (unsigned char) 0x5a)) { // check for LEARN2
-			touch_corner2++;
-		} else {
-			touch_corner2 = 0;
-			if (CAM) {
-				CATCH = FALSE;
-				CAM = FALSE;
-			}
+		if ((elobuf[0] >= (unsigned char) 0x72) && (elobuf[1] >= (unsigned char) 0x5a)) { // check for SPOT2
+			touch_corner1++;
 		};
 	};
-	if (touch_corner1 >= (unsigned int) 2) { // we have several corner presses 
-		LATEbits.LATE1 = !LATEbits.LATE1; // VGA/CAM
-		if (LATEbits.LATE1) {
-			CATCH = FALSE;
-			CAM = TRUE;
-		}
-	};
 
-	if (touch_corner2 >= (unsigned int) 2) { // we have several corner presses
-		LATEbits.LATE2 = !LATEbits.LATE2; // VGA/CAM
-		if (LATEbits.LATE2) {
-			CATCH = FALSE;
-			CAM = TRUE;
-		}
+	if (touch_corner1 >= 3) { // we have several corner presses 
+		CAM = TRUE;
+		touch_corner1 = 0;
+		CATCH = FALSE;
+		LATEbits.LATE1 = 1; // VGA/CAM
 	};
-
 }
 
 void elocmdout(unsigned char *elostr)
@@ -463,6 +450,7 @@ void main(void)
 	TRISJ = 0;
 	TRISH = 0;
 	TRISE = 0;
+	LATE = 0;
 	TRISB = 0;
 	PORTH = 0;
 	TRISD = 0xff;
@@ -517,7 +505,6 @@ void main(void)
 	}
 
 	PORTJ = 0xff; // set leds to off at powerup/reset
-	PORTE = 0xff;
 	DATA1 = FALSE; // reset COMM flags.
 	DATA2 = FALSE;
 	// leds from outputs to ground via resistor.
@@ -564,42 +551,6 @@ void main(void)
 
 	/* Loop forever */
 	while (TRUE) {
-		if ((JB) && (PORTDbits.RD3 == (unsigned char) 1)) {
-			if (!LEARN1) {
-				touch_saved = 0;
-				touch_sent = 0;
-				touch_saved = 0;
-				LEARN1 = TRUE; // 	learn1 touch switch
-			};
-		};
-
-		if ((JB) && (PORTDbits.RD3 == (unsigned char) 0)) {
-			if (LEARN1) {
-				touch_saved = 0;
-				touch_sent = 0;
-				touch_saved = 0;
-				LEARN1 = FALSE; // learn1 touch switch
-			};
-		};
-
-		if ((JB) && (PORTDbits.RD2 == (unsigned char) 1)) {
-			if (!LEARN2) {
-				touch_saved = 0;
-				touch_sent = 0;
-				touch_saved = 0;
-				LEARN2 = TRUE; // 	learn2 touch switch
-			};
-		};
-
-		if ((JB) && (PORTDbits.RD2 == (unsigned char) 0)) {
-			if (LEARN2) {
-				touch_saved = 0;
-				touch_sent = 0;
-				touch_saved = 0;
-				LEARN2 = FALSE; // learn2 touch switch
-			};
-		};
-
 
 		if (j++ >= (BLINK_RATE + speedup)) { // delay a bit ok
 			if (spinner++ > (unsigned int) 2) {
@@ -653,10 +604,10 @@ void main(void)
 		}
 
 		PORTJbits.RJ4 = !PORTJbits.RJ4; // toggle bits program run led
+		touch_cam(); // always check the cam touch
 
 		if (CATCH46) { // flag to send report to host
 			PORTJbits.RJ0 = 1; // flash status led
-			touch_cam();
 
 			if (CATCH) { // send the buffered touch report
 				Delay10KTCYx(75); // 75 ms
