@@ -130,12 +130,13 @@ void rx_handler(void);
 #define GOOD_MAX	128		// max number of chars from TS without expected frames seen
 #define MAX_CAM_TIME	5
 #define MAX_CAM_TOUCH	5
+#define CAM_RELAY	LATBbits.LATB1
 
 volatile int CATCH = FALSE, i = 0, y = 0, LED_UP = TRUE, z = 0, TOUCH = FALSE, UNTOUCH = FALSE,
 	CATCH46 = FALSE, CATCH37 = FALSE, TSTATUS = FALSE, cdelay = 900, NEEDSETUP = FALSE,
 	CRTFIX_DEBUG = 1, DATA1 = FALSE, DATA2 = FALSE, speedup = 0, LEARN1 = FALSE,
 	LEARN2 = FALSE, CORNER1 = FALSE, CORNER2 = FALSE, CAM = FALSE;
-volatile unsigned char touch_good = 0, cam_time=0;
+volatile unsigned char touch_good = 0, cam_time = 0;
 volatile long j = 0, alive_led = 0, touch_count = 0, resync_count = 0, rawint_count = 0, status_count = 0;
 
 /*
@@ -209,8 +210,8 @@ void rx_handler(void)
 	//        unsigned int dcount;
 	static int scrn_ptr = 0, host_ptr = 0, do_cap = DO_CAP, junk;
 
-	junk=PORTB;
-	INTCONbits.RBIF=0;
+	junk = PORTB;
+	INTCONbits.RBIF = 0;
 	rawint_count++; // debug counters
 	if (!do_cap) {
 		PORTJbits.RJ7 = 1; //  led off before checking serial ports
@@ -222,11 +223,11 @@ void rx_handler(void)
 
 	if (PIR3bits.RC2IF) { // is data from touchscreen
 		LATEbits.LATE4 = !LATEbits.LATE4;
-		if (CAM && (cam_time>MAX_CAM_TIME)) {
-		LATEbits.LATE2 = 0;
-		LATEbits.LATE1 = 0; // clear video switch
-		LATBbits.LATB1 = 0; // clear video switch
-		CAM=FALSE;
+		if (CAM && (cam_time > MAX_CAM_TIME)) {
+			LATEbits.LATE2 = 0;
+			LATEbits.LATE1 = 0; // clear video switch
+			CAM_RELAY = 0; // clear video switch
+			CAM = FALSE;
 		}
 		if (RCSTA2bits.OERR) {
 			RCSTA2bits.CREN = 0; //	clear overrun
@@ -374,12 +375,12 @@ void touch_cam(void)
 
 	if (touch_corner1 >= MAX_CAM_TOUCH) { // we have several corner presses 
 		CAM = TRUE;
-		cam_time=0;
+		cam_time = 0;
 		LATEbits.LATE2 = 1;
 		touch_corner1 = 0;
 		LATEbits.LATE1 = 1; // set VGA/CAM switch
-		LATBbits.LATB1 = 1; // set VGA/CAM switch
-		elobuf[0]=elobuf[1]=0;
+		CAM_RELAY = 1; // set VGA/CAM switch
+		elobuf[0] = elobuf[1] = 0;
 	};
 }
 
@@ -460,14 +461,14 @@ void main(void)
 	LATE = 0;
 	LATEbits.LATE2 = 0;
 	TRISB = 0;
-	LATBbits.LATB1=0;
+	CAM_RELAY = 0;
 	PORTH = 0;
 	TRISD = 0xff;
 	touch_count = 0;
-	CAM=0;
-	INTCON=0;
-	INTCON2=0;
-	INTCON3=0;
+	CAM = 0;
+	INTCON = 0;
+	INTCON2 = 0;
+	INTCON3 = 0;
 	if (read_touch_eeprom(0, 0) == (unsigned char) 0x57) CORNER1 = TRUE;
 	if (read_touch_eeprom(0, 512) == (unsigned char) 0x57) CORNER2 = TRUE;
 
@@ -581,7 +582,8 @@ void main(void)
 			if (alive_led == 4) PORTJbits.RJ2 = 0;
 			if (alive_led == 8) PORTJbits.RJ3 = 0;
 			PORTHbits.RH0 = !PORTHbits.RH0; // flash onboard led
-			if (cam_time >MAX_CAM_TIME) LATEbits.LATE2=0;
+//			CAM_RELAY= !CAM_RELAY; // testing code
+			if (cam_time > MAX_CAM_TIME) LATEbits.LATE2 = 0;
 			cam_time++;
 			PORTEbits.RE0 = !PORTEbits.RE0; // flash external led
 			PORTEbits.RE7 = PORTEbits.RE0; // flash external led
