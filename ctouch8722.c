@@ -204,7 +204,7 @@ uint8_t elocodes_s[ELO_SIZE] = {
 	0x0d, 0x0d, 0x0d, 0x0d, 0x0d, 0x3c, 0x2b, 0x44, 0x25, 0x44, 0x3d, 0x2a
 }; // initial touch config codes, single
 volatile uint16_t tchar, uchar, debug_port = 0, restart_delay = 0, touch_saved = 0, touch_sent = 0, touch_corner1 = 0,
-	touch_corner2 = 0, corner_skip = 0;
+	touch_corner_timed = 0, corner_skip = 0;
 #pragma idata
 
 #pragma idata sddata
@@ -383,11 +383,12 @@ void touch_cam(void)
 
 	//	check for corner presses
 	if (CATCH) {
-		if ((elobuf[0] <= (uint8_t) 0x06) && (elobuf[1] >= (uint8_t) 0x5a)) { // check for SPOT1
+		if ((elobuf[0] <= (uint8_t) 0x06) && (elobuf[1] >= (uint8_t) 0x5a)) { // check for left bottom corner
 			touch_corner1++;
+			touch_corner_timed = TRUE;
 		};
 
-		if ((elobuf[0] >= (uint8_t) 0x72) && (elobuf[1] >= (uint8_t) 0x5a)) { // check for SPOT2
+		if ((elobuf[0] >= (uint8_t) 0x72) && (elobuf[1] >= (uint8_t) 0x5a)) { // check for right bottom corner
 			touch_corner1++;
 		};
 	};
@@ -602,7 +603,16 @@ void main(void)
 			if (alive_led == 4) LATJbits.LATJ2 = 0;
 			if (alive_led == 8) LATJbits.LATJ3 = 0;
 			LATHbits.LATH0 = !LATHbits.LATH0; // flash onboard led
-			if (cam_time > MAX_CAM_TIME) CAM_RELAY_TIME = 0;
+			if (cam_time > MAX_CAM_TIME) {
+				CAM_RELAY_TIME = 0;
+				if (touch_corner_timed) {
+					touch_corner_timed = FALSE;
+					CAM_RELAY_TIME = 0;
+					CAM_RELAY_AUX = 0; // clear video switch
+					CAM_RELAY = 0; // clear video switch
+					CAM = FALSE;
+				}
+			}
 			cam_time++;
 			LATEbits.LATE0 = !LATEbits.LATE0; // flash external led
 			LATEbits.LATE7 = LATEbits.LATE0; // flash external led
