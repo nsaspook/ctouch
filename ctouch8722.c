@@ -109,6 +109,24 @@
 #include <string.h>
 #include <stdlib.h>
 #include <EEP.h>
+#include <GenericTypeDefs.h>
+
+#ifdef INTTYPES
+#include <stdint.h>
+#else
+#define INTTYPES
+/*unsigned types*/
+typedef unsigned char uint8_t;
+typedef unsigned int uint16_t;
+typedef unsigned long uint32_t;
+typedef unsigned long long uint64_t;
+/*signed types*/
+typedef signed char int8_t;
+typedef signed int int16_t;
+typedef signed long int32_t;
+typedef signed long long int64_t;
+#endif
+
 
 void rx_handler(void);
 
@@ -131,13 +149,15 @@ void rx_handler(void);
 #define MAX_CAM_TIME	5
 #define MAX_CAM_TOUCH	5
 #define CAM_RELAY	LATBbits.LATB1
+#define CAM_RELAY_AUX	LATEbits.LATE1
+#define CAM_RELAY_TIME	LATEbits.LATE2
 
-volatile int CATCH = FALSE, i = 0, y = 0, LED_UP = TRUE, z = 0, TOUCH = FALSE, UNTOUCH = FALSE,
+volatile uint16_t CATCH = FALSE, i = 0, y = 0, LED_UP = TRUE, z = 0, TOUCH = FALSE, UNTOUCH = FALSE,
 	CATCH46 = FALSE, CATCH37 = FALSE, TSTATUS = FALSE, cdelay = 900, NEEDSETUP = FALSE,
 	CRTFIX_DEBUG = 1, DATA1 = FALSE, DATA2 = FALSE, speedup = 0, LEARN1 = FALSE,
 	LEARN2 = FALSE, CORNER1 = FALSE, CORNER2 = FALSE, CAM = FALSE;
 volatile unsigned char touch_good = 0, cam_time = 0;
-volatile long j = 0, alive_led = 0, touch_count = 0, resync_count = 0, rawint_count = 0, status_count = 0;
+volatile int32_t j = 0, alive_led = 0, touch_count = 0, resync_count = 0, rawint_count = 0, status_count = 0;
 
 /*
  * Step #1  The data is allocated into its own section.
@@ -173,7 +193,7 @@ volatile long j = 0, alive_led = 0, touch_count = 0, resync_count = 0, rawint_co
 //				E1.20		VGA/CAM switcher code.
 //				***
 
-char lcdstr[18] = "CRTFIX E1.19FB |", lcdstatus[18] = "D", lcdstatus_touched[18] = "Touched",
+char lcdstr[18] = "CRTFIX E1.20FB |", lcdstatus[18] = "D", lcdstatus_touched[18] = "Touched",
 	tmp_str[18] = "   ", debugstr[18] = "DEBUG jmpr#6   |", bootstr1[18] = "Power Up        ",
 	bootstr2[18] = "Status: OK     ";
 volatile unsigned char elobuf[BUF_SIZE], spinchr, commchr = ' ';
@@ -183,16 +203,16 @@ unsigned char elocodes_m[ELO_SIZE] = {
 unsigned char elocodes_s[ELO_SIZE] = {
 	0x0d, 0x0d, 0x0d, 0x0d, 0x0d, 0x3c, 0x2b, 0x44, 0x25, 0x44, 0x3d, 0x2a
 }; // initial touch config codes, single
-volatile unsigned int tchar, uchar, debug_port = 0, restart_delay = 0, touch_saved = 0, touch_sent = 0, touch_corner1 = 0,
+volatile uint16_t tchar, uchar, debug_port = 0, restart_delay = 0, touch_saved = 0, touch_sent = 0, touch_corner1 = 0,
 	touch_corner2 = 0, corner_skip = 0;
 #pragma idata
 
 #pragma idata sddata
 volatile unsigned char host_rec[CAP_SIZE] = "H";
-volatile unsigned char scrn_rec[CAP_SIZE] = "S";
+volatile uint8_t scrn_rec[CAP_SIZE] = "S";
 #pragma idata 
 
-volatile unsigned char host_write = FALSE, scrn_write = FALSE;
+volatile uint8_t host_write = FALSE, scrn_write = FALSE;
 
 #pragma code rx_interrupt = 0x8
 
@@ -206,9 +226,8 @@ void rx_int(void)
 
 void rx_handler(void)
 {
-	unsigned char c;
-	//        unsigned int dcount;
-	static int scrn_ptr = 0, host_ptr = 0, do_cap = DO_CAP, junk;
+	uint8_t c;
+	static uint16_t scrn_ptr = 0, host_ptr = 0, do_cap = DO_CAP, junk;
 
 	junk = PORTB;
 	INTCONbits.RBIF = 0;
@@ -224,8 +243,8 @@ void rx_handler(void)
 	if (PIR3bits.RC2IF) { // is data from touchscreen
 		LATEbits.LATE4 = !LATEbits.LATE4;
 		if (CAM && (cam_time > MAX_CAM_TIME)) {
-			LATEbits.LATE2 = 0;
-			LATEbits.LATE1 = 0; // clear video switch
+			CAM_RELAY_TIME = 0;
+			CAM_RELAY_AUX = 0; // clear video switch
 			CAM_RELAY = 0; // clear video switch
 			CAM = FALSE;
 		}
@@ -316,22 +335,22 @@ void rx_handler(void)
 		} else {
 			tchar = RCREG1; // read from host
 			DATA1 = TRUE; // usart is connected to data
-			if ((tchar == (unsigned char) 0x46)) { // send one report to host
+			if ((tchar == (uint8_t) 0x46)) { // send one report to host
 				CATCH46 = TRUE;
 				touch_good = 0;
 			}
-			if ((tchar == (unsigned char) 0x37)) { // start of touch scan read
+			if ((tchar == (uint8_t) 0x37)) { // start of touch scan read
 				CATCH37 = TRUE;
 				touch_good = 0;
 			}
-			if ((tchar == (unsigned char) 0x3C)) { // touch reset from host
+			if ((tchar == (uint8_t) 0x3C)) { // touch reset from host
 				NEEDSETUP = FALSE;
 			}
 		};
 	}
 }
 
-void write_touch_eeprom(unsigned char data, unsigned char count, unsigned int addr, unsigned int offset)
+void write_touch_eeprom(uint8_t data, uint8_t count, uint16_t addr, uint16_t offset)
 {
 	//  eeprom data array: 0=0x57 checksum, 1=length of array 2=start of array data
 	Busy_eep();
@@ -344,15 +363,15 @@ void write_touch_eeprom(unsigned char data, unsigned char count, unsigned int ad
 	Write_b_eep(addr + 2 + offset, data); //  data
 }
 
-unsigned char read_touch_eeprom(unsigned int addr, unsigned int offset)
+uint8_t read_touch_eeprom(uint16_t addr, uint16_t offset)
 {
 	Busy_eep();
 	return Read_b_eep(addr + offset);
 }
 
-void wdtdelay(unsigned int delay)
+void wdtdelay(uint16_t delay)
 {
-	unsigned int dcount;
+	uint16_t dcount;
 
 	for (dcount = 0; dcount <= delay; dcount++) { // delay a bit							// all leds on
 		ClrWdt(); // reset the WDT timer
@@ -364,11 +383,11 @@ void touch_cam(void)
 
 	//	check for corner presses
 	if (CATCH) {
-		if ((elobuf[0] <= (unsigned char) 0x06) && (elobuf[1] >= (unsigned char) 0x5a)) { // check for SPOT1
+		if ((elobuf[0] <= (uint8_t) 0x06) && (elobuf[1] >= (uint8_t) 0x5a)) { // check for SPOT1
 			touch_corner1++;
 		};
 
-		if ((elobuf[0] >= (unsigned char) 0x72) && (elobuf[1] >= (unsigned char) 0x5a)) { // check for SPOT2
+		if ((elobuf[0] >= (uint8_t) 0x72) && (elobuf[1] >= (uint8_t) 0x5a)) { // check for SPOT2
 			touch_corner1++;
 		};
 	};
@@ -376,15 +395,16 @@ void touch_cam(void)
 	if (touch_corner1 >= MAX_CAM_TOUCH) { // we have several corner presses 
 		CAM = TRUE;
 		cam_time = 0;
-		LATEbits.LATE2 = 1;
+		CAM_RELAY_TIME = 1;
 		touch_corner1 = 0;
-		LATEbits.LATE1 = 1; // set VGA/CAM switch
-		CAM_RELAY = 1; // set VGA/CAM switch
-		elobuf[0] = elobuf[1] = 0;
+		CAM_RELAY_AUX = 1; // set secondary VGA/CAM switch
+		CAM_RELAY = 1; // set primary VGA/CAM switch
+		elobuf[0] = 0;
+		elobuf[1] = 0;
 	};
 }
 
-void elocmdout(unsigned char *elostr)
+void elocmdout(uint8_t *elostr)
 {
 	PORTJbits.RJ5 = !PORTJbits.RJ5; // touch screen commands led
 	while (Busy2USART()) {
@@ -397,8 +417,8 @@ void elocmdout(unsigned char *elostr)
 
 void setup_lcd(void)
 {
-	int code_count;
-	unsigned char single_t = SINGLE_TOUCH;
+	uint16_t code_count;
+	uint8_t single_t = SINGLE_TOUCH;
 	if (TS_TYPE == 1) single_t = FALSE;
 	for (code_count = 0; code_count < ELO_SIZE; code_count++) {
 		if (single_t) {
@@ -411,14 +431,14 @@ void setup_lcd(void)
 	NEEDSETUP = FALSE;
 }
 
-void putc1(unsigned int c)
+void putc1(uint16_t c)
 {
 	while (Busy1USART()) {
 	}; // wait until the usart is clear
 	putc1USART(c);
 }
 
-void putc2(unsigned int c)
+void putc2(uint16_t c)
 {
 	while (Busy2USART()) {
 	}; // wait until the usart is clear
@@ -433,7 +453,7 @@ void start_delay(void)
 	wdtdelay(20000); // wait for 4 seconds.
 }
 
-int Test_Screen(void)
+uint16_t Test_Screen(void)
 {
 	while (Busy2USART()) {
 	}; // wait until the usart is clear
@@ -450,27 +470,27 @@ int Test_Screen(void)
 
 void main(void)
 {
-	unsigned int delayc, spinner = 0, eep_ptr;
-	unsigned char scaled_char;
+	uint16_t spinner = 0, eep_ptr;
+	uint8_t scaled_char;
 	float rez_scale_h = 1.0, rez_parm_h, rez_scale_v = 1.0, rez_parm_v;
 
 	/* Configure all PORT B,E,H,J pins for output */
 	TRISJ = 0;
 	TRISH = 0;
 	TRISE = 0;
-	LATE = 0;
-	LATEbits.LATE2 = 0;
 	TRISB = 0;
-	CAM_RELAY = 0;
-	PORTH = 0;
 	TRISD = 0xff;
+	PORTH = 0;
+	LATE = 0;
+	CAM_RELAY_TIME = 0;
+	CAM_RELAY = 0;
 	touch_count = 0;
 	CAM = 0;
 	INTCON = 0;
 	INTCON2 = 0;
 	INTCON3 = 0;
-	if (read_touch_eeprom(0, 0) == (unsigned char) 0x57) CORNER1 = TRUE;
-	if (read_touch_eeprom(0, 512) == (unsigned char) 0x57) CORNER2 = TRUE;
+	if (read_touch_eeprom(0, 0) == (uint8_t) 0x57) CORNER1 = TRUE;
+	if (read_touch_eeprom(0, 512) == (uint8_t) 0x57) CORNER2 = TRUE;
 
 	strcpypgm2ram(bootstr1, "Booting Program    ");
 	start_delay(); // wait for touch-screen to powerup and be ready
@@ -569,7 +589,7 @@ void main(void)
 	while (TRUE) {
 
 		if (j++ >= (BLINK_RATE + speedup)) { // delay a bit ok
-			if (spinner++ > (unsigned int) 2) {
+			if (spinner++ > (uint16_t) 2) {
 				spinchr = '|';
 				spinner = 0;
 			} else {
@@ -582,21 +602,20 @@ void main(void)
 			if (alive_led == 4) PORTJbits.RJ2 = 0;
 			if (alive_led == 8) PORTJbits.RJ3 = 0;
 			PORTHbits.RH0 = !PORTHbits.RH0; // flash onboard led
-//			CAM_RELAY= !CAM_RELAY; // testing code
-			if (cam_time > MAX_CAM_TIME) LATEbits.LATE2 = 0;
+			if (cam_time > MAX_CAM_TIME) CAM_RELAY_TIME = 0;
 			cam_time++;
 			PORTEbits.RE0 = !PORTEbits.RE0; // flash external led
 			PORTEbits.RE7 = PORTEbits.RE0; // flash external led
 
 			/*		For the auto-restart switch						*/
 			if (AUTO_RESTART) { // enable auto-restarts
-				if ((restart_delay++ >= (unsigned int) 60) && (!TSTATUS)) { // try and reinit lcd after delay
+				if ((restart_delay++ >= (uint16_t) 60) && (!TSTATUS)) { // try and reinit lcd after delay
 					start_delay();
 					setup_lcd(); // send lcd touch controller setup codes
 					while (TRUE) {
 					}; // lockup WDT counter to restart
 				} else {
-					if ((restart_delay >= (unsigned int) 150) && (TSTATUS)) { // after delay restart TS status.
+					if ((restart_delay >= (uint16_t) 150) && (TSTATUS)) { // after delay restart TS status.
 						TSTATUS = FALSE; // lost comms while connected
 						restart_delay = 0;
 					};
@@ -632,10 +651,10 @@ void main(void)
 				Delay10KTCYx(75); // 75 ms
 				putc1(0xFE); // send position report header
 				rez_parm_h = ((float) (elobuf[0])) * rez_scale_h;
-				scaled_char = ((int) (rez_parm_h));
+				scaled_char = ((uint16_t) (rez_parm_h));
 				putc1(scaled_char); // send h scaled touch coord
 				rez_parm_v = ((float) (elobuf[1])) * rez_scale_v;
-				scaled_char = ((int) (rez_parm_v));
+				scaled_char = ((uint16_t) (rez_parm_v));
 				putc1(scaled_char); // send v scaled touch coord
 				putc1(0xFF); // send end of report
 				i = 0;
@@ -678,15 +697,15 @@ void main(void)
 		if (NEEDSETUP) setup_lcd(); // send lcdsetup codes to screen
 
 		/*	check for port errors	*/
-		if (RCSTA1bits.OERR == (unsigned char) 1) {
+		if (RCSTA1bits.OERR == (uint8_t) 1) {
 			PORTJ = 0xFF; // all leds off with error
-			PORTE != (unsigned int) 0x02; // overrun clear error and reenable receiver 1
+			PORTE != (uint16_t) 0x02; // overrun clear error and reenable receiver 1
 			RCSTA1bits.CREN = 0;
 			RCSTA1bits.CREN = 1;
 		}
-		if (RCSTA2bits.OERR == (unsigned char) 1) {
+		if (RCSTA2bits.OERR == (uint8_t) 1) {
 			PORTJ = 0xFF; // all leds off with error
-			PORTE != (unsigned char) 0x08; // overrun clear error and reenable receiver 2
+			PORTE != (uint8_t) 0x08; // overrun clear error and reenable receiver 2
 			RCSTA2bits.CREN = 0;
 			RCSTA2bits.CREN = 1;
 		}
