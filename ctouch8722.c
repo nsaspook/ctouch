@@ -147,6 +147,7 @@ void rx_handler(void);
 #define SINGLE_TOUCH	FALSE
 #define GOOD_MAX	128		// max number of chars from TS without expected frames seen
 #define MAX_CAM_TIME	5
+#define MAX_CAM_TIMEOUT	30
 #define MAX_CAM_TOUCH	5
 #define CAM_RELAY	LATBbits.LATB1
 #define CAM_RELAY_AUX	LATEbits.LATE1
@@ -191,9 +192,10 @@ volatile int32_t j = 0, alive_led = 0, touch_count = 0, resync_count = 0, rawint
 //				E1.18		Code for new LCD screens and debug capture.
 //				E1.19		recode ISR to remove library define functions
 //				E1.20		VGA/CAM switcher code.
+//				E1.21		Timed camera for left press, software smells
 //				***
 
-char lcdstr[18] = "CRTFIX E1.20FB |", lcdstatus[18] = "D", lcdstatus_touched[18] = "Touched",
+char lcdstr[18] = "CRTFIX E1.21FB |", lcdstatus[18] = "D", lcdstatus_touched[18] = "Touched",
 	tmp_str[18] = "   ", debugstr[18] = "DEBUG jmpr#6   |", bootstr1[18] = "Power Up        ",
 	bootstr2[18] = "Status: OK     ";
 volatile uint8_t elobuf[BUF_SIZE], spinchr, commchr = ' ';
@@ -448,10 +450,7 @@ void putc2(uint16_t c)
 
 void start_delay(void)
 {
-	wdtdelay(10000); // wait for 4 seconds.
-	wdtdelay(10000); // wait for 4 seconds.
-	wdtdelay(10000); // wait for 4 seconds.
-	wdtdelay(20000); // wait for 4 seconds.
+	wdtdelay(50000); 
 }
 
 uint16_t Test_Screen(void)
@@ -603,7 +602,7 @@ void main(void)
 			if (alive_led == 4) LATJbits.LATJ2 = 0;
 			if (alive_led == 8) LATJbits.LATJ3 = 0;
 			LATHbits.LATH0 = !LATHbits.LATH0; // flash onboard led
-			if (cam_time > MAX_CAM_TIME) {
+			if (cam_time > MAX_CAM_TIMEOUT) {
 				CAM_RELAY_TIME = 0;
 				if (touch_corner_timed) {
 					touch_corner_timed = FALSE;
