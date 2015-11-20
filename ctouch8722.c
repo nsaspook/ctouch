@@ -90,7 +90,7 @@
  * PORTH0		run flasher led onboard.
  * 2x16 LCD status panel and 8 led status lights.
  *
- * Fred Brooks, Microchip Inc , Aug 2009,2013
+ * Fred Brooks, Microchip Inc , Aug 2009,2015
  * Gresham, Oregon
  *
  *
@@ -156,7 +156,7 @@ volatile uint16_t CATCH = FALSE, i = 0, y = 0, LED_UP = TRUE, z = 0, TOUCH = FAL
 	CATCH46 = FALSE, CATCH37 = FALSE, TSTATUS = FALSE, cdelay = 900, NEEDSETUP = FALSE,
 	CRTFIX_DEBUG = 1, DATA1 = FALSE, DATA2 = FALSE, speedup = 0, LEARN1 = FALSE,
 	LEARN2 = FALSE, CORNER1 = FALSE, CORNER2 = FALSE, CAM = FALSE;
-volatile unsigned char touch_good = 0, cam_time = 0;
+volatile uint8_t touch_good = 0, cam_time = 0;
 volatile int32_t j = 0, alive_led = 0, touch_count = 0, resync_count = 0, rawint_count = 0, status_count = 0;
 
 /*
@@ -196,11 +196,11 @@ volatile int32_t j = 0, alive_led = 0, touch_count = 0, resync_count = 0, rawint
 char lcdstr[18] = "CRTFIX E1.20FB |", lcdstatus[18] = "D", lcdstatus_touched[18] = "Touched",
 	tmp_str[18] = "   ", debugstr[18] = "DEBUG jmpr#6   |", bootstr1[18] = "Power Up        ",
 	bootstr2[18] = "Status: OK     ";
-volatile unsigned char elobuf[BUF_SIZE], spinchr, commchr = ' ';
-unsigned char elocodes_m[ELO_SIZE] = {
+volatile uint8_t elobuf[BUF_SIZE], spinchr, commchr = ' ';
+uint8_t elocodes_m[ELO_SIZE] = {
 	0x0d, 0x0d, 0x0d, 0x0d, 0x0d, 0x3c, 0x2b, 0x44, 0x26, 0x44, 0x3d, 0x2a
 }; // initial touch config codes, tracking
-unsigned char elocodes_s[ELO_SIZE] = {
+uint8_t elocodes_s[ELO_SIZE] = {
 	0x0d, 0x0d, 0x0d, 0x0d, 0x0d, 0x3c, 0x2b, 0x44, 0x25, 0x44, 0x3d, 0x2a
 }; // initial touch config codes, single
 volatile uint16_t tchar, uchar, debug_port = 0, restart_delay = 0, touch_saved = 0, touch_sent = 0, touch_corner1 = 0,
@@ -208,7 +208,7 @@ volatile uint16_t tchar, uchar, debug_port = 0, restart_delay = 0, touch_saved =
 #pragma idata
 
 #pragma idata sddata
-volatile unsigned char host_rec[CAP_SIZE] = "H";
+volatile uint8_t host_rec[CAP_SIZE] = "H";
 volatile uint8_t scrn_rec[CAP_SIZE] = "S";
 #pragma idata 
 
@@ -233,8 +233,8 @@ void rx_handler(void)
 	INTCONbits.RBIF = 0;
 	rawint_count++; // debug counters
 	if (!do_cap) {
-		PORTJbits.RJ7 = 1; //  led off before checking serial ports
-		PORTJbits.RJ0 = 0;
+		LATJbits.LATJ7 = 1; //  led off before checking serial ports
+		LATJbits.LATJ0 = 0;
 	}
 	commchr = '*';
 
@@ -286,16 +286,16 @@ void rx_handler(void)
 				restart_delay = 0;
 				CATCH = FALSE;
 				i = 0;
-				PORTEbits.RE0 = 1; // flash external led
-				PORTEbits.RE7 = PORTEbits.RE0; // flash external led
+				LATEbits.LATE0 = 1; // flash external led
+				LATEbits.LATE7 = LATEbits.LATE0; // flash external led
 			};
 			if (c == 0xF5) { // looks like a status report
 				TSTATUS = TRUE;
 				restart_delay = 0;
-				PORTJbits.RJ6 = 0; // led 6 touch-screen connected
+				LATJbits.LATJ6 = 0; // led 6 touch-screen connected
 				speedup = -10000;
-				PORTEbits.RE0 = 1; // flash external led
-				PORTEbits.RE7 = PORTEbits.RE0; // flash external led
+				LATEbits.LATE0 = 1; // flash external led
+				LATEbits.LATE7 = LATEbits.LATE0; // flash external led
 			};
 			if (i > (BUF_SIZE - 2)) {
 				i = 0; // stop buffer-overflow
@@ -303,8 +303,8 @@ void rx_handler(void)
 				CATCH = FALSE;
 			};
 			if (touch_good > GOOD_MAX) { // check for max count and no host to get touch data
-				PORTEbits.RE0 = 1; // LED off
-				PORTEbits.RE7 = PORTEbits.RE0;
+				LATEbits.LATE0 = 1; // LED off
+				LATEbits.LATE7 = LATEbits.LATE0;
 				while (TRUE) { // lockup for reboot
 					touch_good++;
 				};
@@ -406,7 +406,7 @@ void touch_cam(void)
 
 void elocmdout(uint8_t *elostr)
 {
-	PORTJbits.RJ5 = !PORTJbits.RJ5; // touch screen commands led
+	LATJbits.LATJ5 = !LATJbits.LATJ5; // touch screen commands led
 	while (Busy2USART()) {
 	}; // wait until the usart is clear
 	putc2USART(elostr[0]);
@@ -474,7 +474,7 @@ void main(void)
 	uint8_t scaled_char;
 	float rez_scale_h = 1.0, rez_parm_h, rez_scale_v = 1.0, rez_parm_v;
 
-	/* Configure all PORT B,E,H,J pins for output */
+	/* Configure all LAT B,E,H,J pins for output */
 	TRISJ = 0;
 	TRISH = 0;
 	TRISE = 0;
@@ -540,7 +540,7 @@ void main(void)
 		setup_lcd(); // send lcd touch controller setup codes
 	}
 
-	PORTJ = 0xff; // set leds to off at powerup/reset
+	LATJ = 0xff; // set leds to off at powerup/reset
 	DATA1 = FALSE; // reset COMM flags.
 	DATA2 = FALSE;
 	// leds from outputs to ground via resistor.
@@ -595,17 +595,17 @@ void main(void)
 			} else {
 				spinchr = '-';
 			}
-			PORTJbits.RJ1 = 1;
-			PORTJbits.RJ2 = 1;
-			PORTJbits.RJ3 = 1;
-			if (alive_led == 2) PORTJbits.RJ1 = 0; // roll leds cylon style
-			if (alive_led == 4) PORTJbits.RJ2 = 0;
-			if (alive_led == 8) PORTJbits.RJ3 = 0;
-			PORTHbits.RH0 = !PORTHbits.RH0; // flash onboard led
+			LATJbits.LATJ1 = 1;
+			LATJbits.LATJ2 = 1;
+			LATJbits.LATJ3 = 1;
+			if (alive_led == 2) LATJbits.LATJ1 = 0; // roll leds cylon style
+			if (alive_led == 4) LATJbits.LATJ2 = 0;
+			if (alive_led == 8) LATJbits.LATJ3 = 0;
+			LATHbits.LATH0 = !LATHbits.LATH0; // flash onboard led
 			if (cam_time > MAX_CAM_TIME) CAM_RELAY_TIME = 0;
 			cam_time++;
-			PORTEbits.RE0 = !PORTEbits.RE0; // flash external led
-			PORTEbits.RE7 = PORTEbits.RE0; // flash external led
+			LATEbits.LATE0 = !LATEbits.LATE0; // flash external led
+			LATEbits.LATE7 = LATEbits.LATE0; // flash external led
 
 			/*		For the auto-restart switch						*/
 			if (AUTO_RESTART) { // enable auto-restarts
@@ -641,11 +641,11 @@ void main(void)
 			j = 0;
 		}
 
-		PORTJbits.RJ4 = !PORTJbits.RJ4; // toggle bits program run led
+		LATJbits.LATJ4 = !LATJbits.LATJ4; // toggle bits program run led
 		touch_cam(); // always check the cam touch
 
 		if (CATCH46) { // flag to send report to host
-			PORTJbits.RJ0 = 1; // flash status led
+			LATJbits.LATJ0 = 1; // flash status led
 
 			if (CATCH) { // send the buffered touch report
 				Delay10KTCYx(75); // 75 ms
@@ -671,7 +671,7 @@ void main(void)
 		};
 
 		if (CATCH37) { // send screen size codes
-			PORTJbits.RJ7 = 0; // off blink for rez codes sent
+			LATJbits.LATJ7 = 0; // off blink for rez codes sent
 			Delay10KTCYx(75); // 75 ms
 			rez_scale_h = 1.0; // LCD touch screen real H/V rez
 			rez_scale_v = 1.0;
@@ -698,14 +698,14 @@ void main(void)
 
 		/*	check for port errors	*/
 		if (RCSTA1bits.OERR == (uint8_t) 1) {
-			PORTJ = 0xFF; // all leds off with error
-			PORTE != (uint16_t) 0x02; // overrun clear error and reenable receiver 1
+			LATJ = 0xFF; // all leds off with error
+			LATE != (uint16_t) 0x02; // overrun clear error and reenable receiver 1
 			RCSTA1bits.CREN = 0;
 			RCSTA1bits.CREN = 1;
 		}
 		if (RCSTA2bits.OERR == (uint8_t) 1) {
-			PORTJ = 0xFF; // all leds off with error
-			PORTE != (uint8_t) 0x08; // overrun clear error and reenable receiver 2
+			LATJ = 0xFF; // all leds off with error
+			LATE != (uint8_t) 0x08; // overrun clear error and reenable receiver 2
 			RCSTA2bits.CREN = 0;
 			RCSTA2bits.CREN = 1;
 		}
