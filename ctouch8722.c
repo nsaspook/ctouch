@@ -132,8 +132,9 @@ void rx_handler(void);
 
 #define	DO_CAP	FALSE			// save data for usarts 1&2, save to eeprom
 #define	TS_TYPE	0			// 0 for old CRT type screens, 1 for newer LCD screens
+#define SET_EMU	TRUE
 
-#define BUF_SIZE 128
+#define BUF_SIZE 64
 #define	CAP_SIZE 256
 #define	CMD_SIZE 2
 #define	CMD_OVERFLOW	CMD_SIZE*12
@@ -149,15 +150,21 @@ void rx_handler(void);
 #define MAX_CAM_TIME	5
 #define MAX_CAM_TIMEOUT	30
 #define MAX_CAM_TOUCH	5
-#define CAM_RELAY	LATBbits.LATB1
+#define CAM_RELAY	LATAbits.LATA1
 #define CAM_RELAY_AUX	LATEbits.LATE1
 #define CAM_RELAY_TIME	LATEbits.LATE2
+
+typedef struct reporttype {
+	uint8_t headder, status;
+	uint16_t x_cord, y_cord, z_cord;
+	uint8_t checksum;
+} volatile reporttype;
 
 volatile uint16_t CATCH = FALSE, i = 0, y = 0, LED_UP = TRUE, z = 0, TOUCH = FALSE, UNTOUCH = FALSE,
 	CATCH46 = FALSE, CATCH37 = FALSE, TSTATUS = FALSE, cdelay = 900, NEEDSETUP = FALSE,
 	CRTFIX_DEBUG = 1, DATA1 = FALSE, DATA2 = FALSE, speedup = 0, LEARN1 = FALSE,
 	LEARN2 = FALSE, CORNER1 = FALSE, CORNER2 = FALSE, CAM = FALSE;
-volatile uint8_t touch_good = 0, cam_time = 0;
+volatile uint8_t touch_good = 0, cam_time = 0, do_emu = SET_EMU;
 volatile int32_t j = 0, alive_led = 0, touch_count = 0, resync_count = 0, rawint_count = 0, status_count = 0;
 
 /*
@@ -193,20 +200,51 @@ volatile int32_t j = 0, alive_led = 0, touch_count = 0, resync_count = 0, rawint
 //				E1.19		recode ISR to remove library define functions
 //				E1.20		VGA/CAM switcher code.
 //				E1.21		Timed camera for left press, software smells
+//				E1.22		Support for SmartSet commands on newer touch panels
 //				***
 
-char lcdstr[18] = "CRTFIX E1.21FB |", lcdstatus[18] = "D", lcdstatus_touched[18] = "Touched",
+char lcdstr[18] = "CRTFIX E1.22FB |", lcdstatus[18] = "D", lcdstatus_touched[18] = "Touched",
 	tmp_str[18] = "   ", debugstr[18] = "DEBUG jmpr#6   |", bootstr1[18] = "Power Up        ",
 	bootstr2[18] = "Status: OK     ";
-volatile uint8_t elobuf[BUF_SIZE], spinchr, commchr = ' ';
-uint8_t elocodes_m[ELO_SIZE] = {
+volatile uint8_t elobuf[BUF_SIZE], ssbuf[BUF_SIZE], spinchr, commchr = ' ';
+
+volatile struct reporttype *ssreport = (reporttype *) ssbuf;
+
+uint8_t elocodes_m[ELO_SIZE] = {// 5 char, soft-reset,touch scanning off, report transfer on, (0x26) tracking mode, report transfer on, clear touch buffer, touch scanning on
 	0x0d, 0x0d, 0x0d, 0x0d, 0x0d, 0x3c, 0x2b, 0x44, 0x26, 0x44, 0x3d, 0x2a
 }; // initial touch config codes, tracking
-uint8_t elocodes_s[ELO_SIZE] = {
+uint8_t elocodes_s[ELO_SIZE] = {// same as above ex (0x25) enter point mode
 	0x0d, 0x0d, 0x0d, 0x0d, 0x0d, 0x3c, 0x2b, 0x44, 0x25, 0x44, 0x3d, 0x2a
 }; // initial touch config codes, single
+
+uint8_t elocodes_e0[ELO_SIZE] = {// emulate setup E271-2200 TOUCH BINARY
+	0x55, 'Q', 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+uint8_t elocodes_e1[ELO_SIZE] = {
+	0x55, 'Q', 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+uint8_t elocodes_e2[ELO_SIZE] = {
+	0x55, 'M', 0b00000011, 0b01001000, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+uint8_t elocodes_e3[ELO_SIZE] = {
+	0x55, 'S', 'X', 0x00, 0x00, 0x00, 0x71, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+uint8_t elocodes_e4[ELO_SIZE] = {
+	0x55, 'S', 'Y', 0x00, 0x00, 0x00, 0x59, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+uint8_t elocodes_e5[ELO_SIZE] = {
+	0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+uint8_t elocodes_e6[ELO_SIZE] = {
+	0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+uint8_t elocodes_e7[ELO_SIZE] = {
+	0x55, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+
 volatile uint16_t tchar, uchar, debug_port = 0, restart_delay = 0, touch_saved = 0, touch_sent = 0, touch_corner1 = 0,
 	touch_corner_timed = 0, corner_skip = 0;
+
 #pragma idata
 
 #pragma idata sddata
@@ -231,8 +269,10 @@ void rx_handler(void)
 	uint8_t c;
 	static uint16_t scrn_ptr = 0, host_ptr = 0, do_cap = DO_CAP, junk;
 
-	junk = PORTB;
-	INTCONbits.RBIF = 0;
+	if (INTCONbits.RBIF) {
+		junk = PORTB;
+		INTCONbits.RBIF = 0;
+	}
 	rawint_count++; // debug counters
 	if (!do_cap) {
 		LATJbits.LATJ7 = 1; //  led off before checking serial ports
@@ -268,48 +308,95 @@ void rx_handler(void)
 				LATJbits.LATJ4 = !LATJbits.LATJ4; // flash  led
 			}
 		} else {
-			touch_good++; // chars received before a status report
-			LATEbits.LATE0 = 1; // flash external led
-			LATEbits.LATE7 = LATEbits.LATE0; // flash external led
-			DATA2 = TRUE; // usart is connected to data
-			if (TOUCH) {
-				elobuf[i++] = c;
+			if (do_emu) {
+				touch_good++; // chars received before a status report
 				LATEbits.LATE0 = 1; // flash external led
 				LATEbits.LATE7 = LATEbits.LATE0; // flash external led
-				if (c == 0xFF && TOUCH) { // end of report
-					CATCH = TRUE;
+				DATA2 = TRUE; // usart is connected to data
+				if (TOUCH) {
+					elobuf[i++] = c;
+					LATEbits.LATE0 = 1; // flash external led
+					LATEbits.LATE7 = LATEbits.LATE0; // flash external led
+					if (i == ELO_SEQ) { // end of report
+						CATCH = TRUE;
+						restart_delay = 0;
+						TOUCH = FALSE; // stop buffering touchscreen data.
+						LATF = ssreport->x_cord;
+					};
+				};
+				if (c == 'T' && (!CATCH)) { // looks like a touch report
+					TOUCH = TRUE;
+					TSTATUS = TRUE;
 					restart_delay = 0;
-					TOUCH = FALSE; // stop buffering touchscreen data.
+					CATCH = FALSE;
+					i = 0;
+					LATEbits.LATE0 = 1; // flash external led
+					LATEbits.LATE7 = LATEbits.LATE0; // flash external led
 				};
-			};
-			if (c == 0xFE && (!CATCH)) { // looks like a touch report
-				TOUCH = TRUE;
-				TSTATUS = TRUE;
-				restart_delay = 0;
-				CATCH = FALSE;
-				i = 0;
+				if (c == 0xF5) { // looks like a status report
+					TSTATUS = TRUE;
+					restart_delay = 0;
+					LATJbits.LATJ6 = 0; // led 6 touch-screen connected
+					speedup = -10000;
+					LATEbits.LATE0 = 1; // flash external led
+					LATEbits.LATE7 = LATEbits.LATE0; // flash external led
+				};
+				if (i > (BUF_SIZE - 2)) {
+					i = 0; // stop buffer-overflow
+					TOUCH = FALSE;
+					CATCH = FALSE;
+				};
+				if (touch_good > GOOD_MAX) { // check for max count and no host to get touch data
+					LATEbits.LATE0 = 1; // LED off
+					LATEbits.LATE7 = LATEbits.LATE0;
+					while (TRUE) { // lockup for reboot
+						touch_good++;
+					};
+				}
+			} else {
+				touch_good++; // chars received before a status report
 				LATEbits.LATE0 = 1; // flash external led
 				LATEbits.LATE7 = LATEbits.LATE0; // flash external led
-			};
-			if (c == 0xF5) { // looks like a status report
-				TSTATUS = TRUE;
-				restart_delay = 0;
-				LATJbits.LATJ6 = 0; // led 6 touch-screen connected
-				speedup = -10000;
-				LATEbits.LATE0 = 1; // flash external led
-				LATEbits.LATE7 = LATEbits.LATE0; // flash external led
-			};
-			if (i > (BUF_SIZE - 2)) {
-				i = 0; // stop buffer-overflow
-				TOUCH = FALSE;
-				CATCH = FALSE;
-			};
-			if (touch_good > GOOD_MAX) { // check for max count and no host to get touch data
-				LATEbits.LATE0 = 1; // LED off
-				LATEbits.LATE7 = LATEbits.LATE0;
-				while (TRUE) { // lockup for reboot
-					touch_good++;
+				DATA2 = TRUE; // usart is connected to data
+				if (TOUCH) {
+					elobuf[i++] = c;
+					LATEbits.LATE0 = 1; // flash external led
+					LATEbits.LATE7 = LATEbits.LATE0; // flash external led
+					if (c == 0xFF && TOUCH) { // end of report
+						CATCH = TRUE;
+						restart_delay = 0;
+						TOUCH = FALSE; // stop buffering touchscreen data.
+					};
 				};
+				if (c == 0xFE && (!CATCH)) { // looks like a touch report
+					TOUCH = TRUE;
+					TSTATUS = TRUE;
+					restart_delay = 0;
+					CATCH = FALSE;
+					i = 0;
+					LATEbits.LATE0 = 1; // flash external led
+					LATEbits.LATE7 = LATEbits.LATE0; // flash external led
+				};
+				if (c == 0xF5) { // looks like a status report
+					TSTATUS = TRUE;
+					restart_delay = 0;
+					LATJbits.LATJ6 = 0; // led 6 touch-screen connected
+					speedup = -10000;
+					LATEbits.LATE0 = 1; // flash external led
+					LATEbits.LATE7 = LATEbits.LATE0; // flash external led
+				};
+				if (i > (BUF_SIZE - 2)) {
+					i = 0; // stop buffer-overflow
+					TOUCH = FALSE;
+					CATCH = FALSE;
+				};
+				if (touch_good > GOOD_MAX) { // check for max count and no host to get touch data
+					LATEbits.LATE0 = 1; // LED off
+					LATEbits.LATE7 = LATEbits.LATE0;
+					while (TRUE) { // lockup for reboot
+						touch_good++;
+					};
+				}
 			}
 		}
 	};
@@ -418,18 +505,47 @@ void elocmdout(uint8_t *elostr)
 	}; // wait until the usart is clear
 }
 
+void eloSScmdout(uint8_t *elostr)
+{
+	LATJbits.LATJ5 = !LATJbits.LATJ5; // touch screen commands led
+	while (Busy2USART()) {
+	}; // wait until the usart is clear
+	putc2USART(elostr[0]);
+	wdtdelay(30000);
+	while (Busy2USART()) {
+	}; // wait until the usart is clear
+}
+
+void elopacketout(uint8_t *strptr, uint8_t strcount)
+{
+	uint8_t i;
+	for (i = 0; i < strcount; i++) {
+		eloSScmdout(&strptr[i]);
+	};
+}
+
 void setup_lcd(void)
 {
 	uint16_t code_count;
 	uint8_t single_t = SINGLE_TOUCH;
-	if (TS_TYPE == 1) single_t = FALSE;
-	for (code_count = 0; code_count < ELO_SIZE; code_count++) {
-		if (single_t) {
-			elocmdout(&elocodes_s[code_count]);
-		} else {
-			elocmdout(&elocodes_m[code_count]);
-		}
-	};
+
+	if (do_emu) {
+		elopacketout(elocodes_e0, ELO_SEQ);
+		elopacketout(elocodes_e2, ELO_SEQ);
+		elopacketout(elocodes_e3, ELO_SEQ);
+		elopacketout(elocodes_e4, ELO_SEQ);
+		elopacketout(elocodes_e1, ELO_SEQ);
+	} else {
+
+		if (TS_TYPE == 1) single_t = FALSE;
+		for (code_count = 0; code_count < ELO_SIZE; code_count++) {
+			if (single_t) {
+				elocmdout(&elocodes_s[code_count]);
+			} else {
+				elocmdout(&elocodes_m[code_count]);
+			}
+		};
+	}
 
 	NEEDSETUP = FALSE;
 }
@@ -450,13 +566,14 @@ void putc2(uint16_t c)
 
 void start_delay(void)
 {
-	wdtdelay(50000); 
+	wdtdelay(50000);
 }
 
 uint16_t Test_Screen(void)
 {
 	while (Busy2USART()) {
 	}; // wait until the usart is clear
+	if (do_emu) return TRUE;
 	putc2(0x46);
 	wdtdelay(30000);
 	if (DATA2) {
@@ -478,7 +595,9 @@ void main(void)
 	TRISJ = 0;
 	TRISH = 0;
 	TRISE = 0;
+	TRISF = 0;
 	TRISB = 0;
+	TRISA = 0;
 	TRISD = 0xff;
 	PORTH = 0;
 	LATE = 0;
@@ -529,7 +648,7 @@ void main(void)
 	PIE1bits.RC1IE = 1; // com1 int unmask
 	PIE3bits.RC2IE = 1; // com2 int unmask
 	INTCONbits.RBIE = 0; // enable PORTB interrupts 1=enable
-	INTCON2bits.RBIP = 1; // Set the PORTB interrupt-on-change as a high priority interrupt
+	//INTCON2bits.RBIP = 1; // Set the PORTB interrupt-on-change as a high priority interrupt
 	/* Enable all interrupts */
 	INTCONbits.GIE = 1; // global int enable
 	INTCONbits.PEIE = 1; // enable all unmasked int
@@ -542,7 +661,7 @@ void main(void)
 
 	LATJ = 0xff; // set leds to off at powerup/reset
 	DATA1 = FALSE; // reset COMM flags.
-	DATA2 = FALSE;
+	DATA2 = FALSE; // reset touch COMM flag
 	// leds from outputs to ground via resistor.
 
 	while (DO_CAP) {
@@ -621,6 +740,7 @@ void main(void)
 				if ((restart_delay++ >= (uint16_t) 60) && (!TSTATUS)) { // try and reinit lcd after delay
 					start_delay();
 					setup_lcd(); // send lcd touch controller setup codes
+					start_delay();
 					while (TRUE) {
 					}; // lockup WDT counter to restart
 				} else {
@@ -659,12 +779,21 @@ void main(void)
 			if (CATCH) { // send the buffered touch report
 				Delay10KTCYx(75); // 75 ms
 				putc1(0xFE); // send position report header
-				rez_parm_h = ((float) (elobuf[0])) * rez_scale_h;
-				scaled_char = ((uint16_t) (rez_parm_h));
-				putc1(scaled_char); // send h scaled touch coord
-				rez_parm_v = ((float) (elobuf[1])) * rez_scale_v;
-				scaled_char = ((uint16_t) (rez_parm_v));
-				putc1(scaled_char); // send v scaled touch coord
+				if (do_emu) {
+					rez_parm_h = ((float) (ssreport->x_cord)) * rez_scale_h;
+					scaled_char = ((uint16_t) (rez_parm_h));
+					putc1(scaled_char); // send h scaled touch coord
+					rez_parm_v = ((float) (ssreport->y_cord)) * rez_scale_v;
+					scaled_char = ((uint16_t) (rez_parm_v));
+					putc1(scaled_char); // send v scaled touch coord
+				} else {
+					rez_parm_h = ((float) (elobuf[0])) * rez_scale_h;
+					scaled_char = ((uint16_t) (rez_parm_h));
+					putc1(scaled_char); // send h scaled touch coord
+					rez_parm_v = ((float) (elobuf[1])) * rez_scale_v;
+					scaled_char = ((uint16_t) (rez_parm_v));
+					putc1(scaled_char); // send v scaled touch coord
+				}
 				putc1(0xFF); // send end of report
 				i = 0;
 				touch_count++;
@@ -684,7 +813,7 @@ void main(void)
 			Delay10KTCYx(75); // 75 ms
 			rez_scale_h = 1.0; // LCD touch screen real H/V rez
 			rez_scale_v = 1.0;
-			putc2(0x3D); // send clear buffer to touch
+			if (!do_emu) putc2(0x3D); // send clear buffer to touch
 			putc1(0xF4); // send status report
 			if (TS_TYPE == 0) { // CRT type screens
 				putc1(0x77); // touch parm
