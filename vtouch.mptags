@@ -1,0 +1,31 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+BLINK_RATE::20000	Z:\carrol_touch\ctouch18f452\example2.c	38;"	d	line:38	file:
+BUF_SIZE::128	Z:\carrol_touch\ctouch18f452\example2.c	31;"	d	line:31	file:
+CATCH	Z:\carrol_touch\ctouch18f452\example2.c	40;"	v	line:40
+CMD_OVERFLOW::CMD_SIZE*12	Z:\carrol_touch\ctouch18f452\example2.c	33;"	d	line:33	file:
+CMD_SIZE::2	Z:\carrol_touch\ctouch18f452\example2.c	32;"	d	line:32	file:
+ELO_SEQ::10	Z:\carrol_touch\ctouch18f452\example2.c	35;"	d	line:35	file:
+ELO_SIZE::12	Z:\carrol_touch\ctouch18f452\example2.c	34;"	d	line:34	file:
+FALSE::0	Z:\carrol_touch\ctouch18f452\example2.c	36;"	d	line:36	file:
+LED_UP	Z:\carrol_touch\ctouch18f452\example2.c	40;"	v	line:40
+TOUCH	Z:\carrol_touch\ctouch18f452\example2.c	40;"	v	line:40
+TRUE::1	Z:\carrol_touch\ctouch18f452\example2.c	37;"	d	line:37	file:
+UNTOUCH	Z:\carrol_touch\ctouch18f452\example2.c	40;"	v	line:40
+alive_led	Z:\carrol_touch\ctouch18f452\example2.c	41;"	v	line:41
+elobuf	Z:\carrol_touch\ctouch18f452\example2.c	47;"	v	line:47
+elocodes	Z:\carrol_touch\ctouch18f452\example2.c	48;"	v	line:48
+i	Z:\carrol_touch\ctouch18f452\example2.c	40;"	v	line:40
+j	Z:\carrol_touch\ctouch18f452\example2.c	41;"	v	line:41
+rx_handler	Z:\carrol_touch\ctouch18f452\example2.c	29;"	p	line:29	file:	signature:(void)
+rx_int	Z:\carrol_touch\ctouch18f452\example2.c	54;"	f	line:54	signature:(void)
+tchar	Z:\carrol_touch\ctouch18f452\example2.c	50;"	v	line:50
+uchar	Z:\carrol_touch\ctouch18f452\example2.c	50;"	v	line:50
+y	Z:\carrol_touch\ctouch18f452\example2.c	40;"	v	line:40
+z	Z:\carrol_touch\ctouch18f452\example2.c	40;"	v	line:40
