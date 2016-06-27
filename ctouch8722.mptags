@@ -6,146 +6,192 @@
 !_TAG_PROGRAM_VERSION	5.5.4	//
 !_TAG_REVISION_NAME	MCHPTags	//
 !_TAG_REVISION_VERSION	6.0.1	//
-AUTO_RESTART::FALSE	X:\carrol_touch\ctouch18f8722\ctouch8722.c	128;"	d	line:128	file:
-BLINK_OFF::0b00001110	X:\carrol_touch\ctouch18f8722\xlcd.h	53;"	d	line:53
-BLINK_ON::0b00001111	X:\carrol_touch\ctouch18f8722\xlcd.h	52;"	d	line:52
-BLINK_RATE::20000	X:\carrol_touch\ctouch18f8722\ctouch8722.c	126;"	d	line:126	file:
-BUF_SIZE::128	X:\carrol_touch\ctouch18f8722\ctouch8722.c	118;"	d	line:118	file:
-BusyXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	89;"	p	line:89	signature:(void)
-CAM	X:\carrol_touch\ctouch18f8722\ctouch8722.c	138;"	v	line:138
-CAM_RELAY::LATBbits.LATB1	X:\carrol_touch\ctouch18f8722\ctouch8722.c	133;"	d	line:133	file:
-CAP_SIZE::256	X:\carrol_touch\ctouch18f8722\ctouch8722.c	119;"	d	line:119	file:
-CATCH	X:\carrol_touch\ctouch18f8722\ctouch8722.c	135;"	v	line:135
-CATCH37	X:\carrol_touch\ctouch18f8722\ctouch8722.c	136;"	v	line:136
-CATCH46	X:\carrol_touch\ctouch18f8722\ctouch8722.c	136;"	v	line:136
-CMD_OVERFLOW::CMD_SIZE*12	X:\carrol_touch\ctouch18f8722\ctouch8722.c	121;"	d	line:121	file:
-CMD_SIZE::2	X:\carrol_touch\ctouch18f8722\ctouch8722.c	120;"	d	line:120	file:
-CORNER1	X:\carrol_touch\ctouch18f8722\ctouch8722.c	138;"	v	line:138
-CORNER2	X:\carrol_touch\ctouch18f8722\ctouch8722.c	138;"	v	line:138
-CRTFIX_DEBUG	X:\carrol_touch\ctouch18f8722\ctouch8722.c	137;"	v	line:137
-CURSOR_OFF::0b00001101	X:\carrol_touch\ctouch18f8722\xlcd.h	51;"	d	line:51
-CURSOR_ON::0b00001111	X:\carrol_touch\ctouch18f8722\xlcd.h	50;"	d	line:50
-DATA1	X:\carrol_touch\ctouch18f8722\ctouch8722.c	137;"	v	line:137
-DATA2	X:\carrol_touch\ctouch18f8722\ctouch8722.c	137;"	v	line:137
-DATA_PORT::PORTH	X:\carrol_touch\ctouch18f8722\xlcd.h	34;"	d	line:34
-DOFF::0b00001011	X:\carrol_touch\ctouch18f8722\xlcd.h	49;"	d	line:49
-DON::0b00001111	X:\carrol_touch\ctouch18f8722\xlcd.h	48;"	d	line:48
-DO_CAP::FALSE	X:\carrol_touch\ctouch18f8722\ctouch8722.c	115;"	d	line:115	file:
-DelayFor18TCY	X:\carrol_touch\ctouch18f8722\xlcd.h	127;"	p	line:127	signature:(void)
-DelayPORXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	128;"	p	line:128	signature:(void)
-DelayXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	129;"	p	line:129	signature:(void)
-EIGHT_BIT::0b00111111	X:\carrol_touch\ctouch18f8722\xlcd.h	63;"	d	line:63
-ELO_SEQ::10	X:\carrol_touch\ctouch18f8722\ctouch8722.c	123;"	d	line:123	file:
-ELO_SIZE::12	X:\carrol_touch\ctouch18f8722\ctouch8722.c	122;"	d	line:122	file:
-E_PIN::LATHbits.LATH3	X:\carrol_touch\ctouch18f8722\xlcd.h	44;"	d	line:44
-FALSE::0	X:\carrol_touch\ctouch18f8722\ctouch8722.c	124;"	d	line:124	file:
-FOUR_BIT::0b00101111	X:\carrol_touch\ctouch18f8722\xlcd.h	62;"	d	line:62
-GOOD_MAX::128	X:\carrol_touch\ctouch18f8722\ctouch8722.c	130;"	d	line:130	file:
-JB::FALSE	X:\carrol_touch\ctouch18f8722\ctouch8722.c	127;"	d	line:127	file:
-LEARN1	X:\carrol_touch\ctouch18f8722\ctouch8722.c	137;"	v	line:137
-LEARN2	X:\carrol_touch\ctouch18f8722\ctouch8722.c	138;"	v	line:138
-LED_UP	X:\carrol_touch\ctouch18f8722\ctouch8722.c	135;"	v	line:135
-LINES_5X7::0b00111011	X:\carrol_touch\ctouch18f8722\xlcd.h	66;"	d	line:66
-LINE_5X10::0b00110111	X:\carrol_touch\ctouch18f8722\xlcd.h	65;"	d	line:65
-LINE_5X7::0b00110011	X:\carrol_touch\ctouch18f8722\xlcd.h	64;"	d	line:64
-MAX_CAM_TIME::5	X:\carrol_touch\ctouch18f8722\ctouch8722.c	131;"	d	line:131	file:
-MAX_CAM_TOUCH::5	X:\carrol_touch\ctouch18f8722\ctouch8722.c	132;"	d	line:132	file:
-MEM_MODEL::far	X:\carrol_touch\ctouch18f8722\xlcd.h	69;"	d	line:69
-NEEDSETUP	X:\carrol_touch\ctouch18f8722\ctouch8722.c	136;"	v	line:136
-OpenXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	74;"	p	line:74	signature:(PARAM_SCLASS unsigned char)
-PARAM_SCLASS::auto	X:\carrol_touch\ctouch18f8722\xlcd.h	68;"	d	line:68
-RS_PIN::LATHbits.LATH1	X:\carrol_touch\ctouch18f8722\xlcd.h	42;"	d	line:42
-RW_PIN::LATHbits.LATH2	X:\carrol_touch\ctouch18f8722\xlcd.h	40;"	d	line:40
-ReadAddrXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	94;"	p	line:94	signature:(void)
-ReadDataXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	99;"	p	line:99	signature:(void)
-SHIFT_CUR_LEFT::0b00010011	X:\carrol_touch\ctouch18f8722\xlcd.h	56;"	d	line:56
-SHIFT_CUR_RIGHT::0b00010111	X:\carrol_touch\ctouch18f8722\xlcd.h	57;"	d	line:57
-SHIFT_DISP_LEFT::0b00011011	X:\carrol_touch\ctouch18f8722\xlcd.h	58;"	d	line:58
-SHIFT_DISP_RIGHT::0b00011111	X:\carrol_touch\ctouch18f8722\xlcd.h	59;"	d	line:59
-SINGLE_TOUCH::FALSE	X:\carrol_touch\ctouch18f8722\ctouch8722.c	129;"	d	line:129	file:
-SetCGRamAddr	X:\carrol_touch\ctouch18f8722\xlcd.h	79;"	p	line:79	signature:(PARAM_SCLASS unsigned char)
-SetDDRamAddr	X:\carrol_touch\ctouch18f8722\xlcd.h	84;"	p	line:84	signature:(PARAM_SCLASS unsigned char)
-TOUCH	X:\carrol_touch\ctouch18f8722\ctouch8722.c	135;"	v	line:135
-TRIS_DATA_PORT::TRISH	X:\carrol_touch\ctouch18f8722\xlcd.h	35;"	d	line:35
-TRIS_E::TRISHbits.TRISH3	X:\carrol_touch\ctouch18f8722\xlcd.h	45;"	d	line:45
-TRIS_RS::TRISHbits.TRISH1	X:\carrol_touch\ctouch18f8722\xlcd.h	43;"	d	line:43
-TRIS_RW::TRISHbits.TRISH2	X:\carrol_touch\ctouch18f8722\xlcd.h	41;"	d	line:41
-TRUE::1	X:\carrol_touch\ctouch18f8722\ctouch8722.c	125;"	d	line:125	file:
-TSTATUS	X:\carrol_touch\ctouch18f8722\ctouch8722.c	136;"	v	line:136
-TS_TYPE::0	X:\carrol_touch\ctouch18f8722\ctouch8722.c	116;"	d	line:116	file:
-Test_Screen	X:\carrol_touch\ctouch18f8722\ctouch8722.c	436;"	f	line:436	signature:(void)
-UNTOUCH	X:\carrol_touch\ctouch18f8722\ctouch8722.c	135;"	v	line:135
-UPPER	X:\carrol_touch\ctouch18f8722\xlcd.h	31;"	d	line:31
-WriteCmdXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	104;"	p	line:104	signature:(PARAM_SCLASS unsigned char)
-WriteDataXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	109;"	p	line:109	signature:(PARAM_SCLASS char)
-__XLCD_H	X:\carrol_touch\ctouch18f8722\xlcd.h	2;"	d	line:2
-alive_led	X:\carrol_touch\ctouch18f8722\ctouch8722.c	140;"	v	line:140
-bootstr1	X:\carrol_touch\ctouch18f8722\ctouch8722.c	177;"	v	line:177
-bootstr2	X:\carrol_touch\ctouch18f8722\ctouch8722.c	178;"	v	line:178
-c	X:\carrol_touch\ctouch18f8722\ctouch8722.c	209;"	l	line:209
-cam_time	X:\carrol_touch\ctouch18f8722\ctouch8722.c	139;"	v	line:139
-cdelay	X:\carrol_touch\ctouch18f8722\ctouch8722.c	136;"	v	line:136
-code_count	X:\carrol_touch\ctouch18f8722\ctouch8722.c	400;"	l	line:400
-commchr	X:\carrol_touch\ctouch18f8722\ctouch8722.c	179;"	v	line:179
-corner_skip	X:\carrol_touch\ctouch18f8722\ctouch8722.c	187;"	v	line:187
-dcount	X:\carrol_touch\ctouch18f8722\ctouch8722.c	355;"	l	line:355
-debug_port	X:\carrol_touch\ctouch18f8722\ctouch8722.c	186;"	v	line:186
-debugstr	X:\carrol_touch\ctouch18f8722\ctouch8722.c	177;"	v	line:177
-delayc	X:\carrol_touch\ctouch18f8722\ctouch8722.c	453;"	l	line:453
-do_cap	X:\carrol_touch\ctouch18f8722\ctouch8722.c	211;"	l	line:211	file:
-eep_ptr	X:\carrol_touch\ctouch18f8722\ctouch8722.c	453;"	l	line:453
-elobuf	X:\carrol_touch\ctouch18f8722\ctouch8722.c	179;"	v	line:179
-elocmdout	X:\carrol_touch\ctouch18f8722\ctouch8722.c	387;"	f	line:387	signature:(unsigned char *elostr)
-elocodes_m	X:\carrol_touch\ctouch18f8722\ctouch8722.c	180;"	v	line:180
-elocodes_s	X:\carrol_touch\ctouch18f8722\ctouch8722.c	183;"	v	line:183
-host_ptr	X:\carrol_touch\ctouch18f8722\ctouch8722.c	211;"	l	line:211	file:
-host_rec	X:\carrol_touch\ctouch18f8722\ctouch8722.c	191;"	v	line:191
-host_write	X:\carrol_touch\ctouch18f8722\ctouch8722.c	195;"	v	line:195
-i	X:\carrol_touch\ctouch18f8722\ctouch8722.c	135;"	v	line:135
-j	X:\carrol_touch\ctouch18f8722\ctouch8722.c	140;"	v	line:140
-junk	X:\carrol_touch\ctouch18f8722\ctouch8722.c	211;"	l	line:211	file:
-lcdstatus	X:\carrol_touch\ctouch18f8722\ctouch8722.c	176;"	v	line:176
-lcdstatus_touched	X:\carrol_touch\ctouch18f8722\ctouch8722.c	176;"	v	line:176
-lcdstr	X:\carrol_touch\ctouch18f8722\ctouch8722.c	176;"	v	line:176
-main	X:\carrol_touch\ctouch18f8722\ctouch8722.c	451;"	f	line:451	signature:(void)
-putc1	X:\carrol_touch\ctouch18f8722\ctouch8722.c	414;"	f	line:414	signature:(unsigned int c)
-putc2	X:\carrol_touch\ctouch18f8722\ctouch8722.c	421;"	f	line:421	signature:(unsigned int c)
-putcXLCD::WriteDataXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	114;"	d	line:114
-putrsXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	124;"	p	line:124	signature:(PARAM_SCLASS const MEM_MODEL rom char *)
-putsXLCD	X:\carrol_touch\ctouch18f8722\xlcd.h	119;"	p	line:119	signature:(PARAM_SCLASS char *)
-rawint_count	X:\carrol_touch\ctouch18f8722\ctouch8722.c	140;"	v	line:140
-read_touch_eeprom	X:\carrol_touch\ctouch18f8722\ctouch8722.c	347;"	f	line:347	signature:(unsigned int addr, unsigned int offset)
-restart_delay	X:\carrol_touch\ctouch18f8722\ctouch8722.c	186;"	v	line:186
-resync_count	X:\carrol_touch\ctouch18f8722\ctouch8722.c	140;"	v	line:140
-rez_parm_h	X:\carrol_touch\ctouch18f8722\ctouch8722.c	455;"	l	line:455
-rez_parm_v	X:\carrol_touch\ctouch18f8722\ctouch8722.c	455;"	l	line:455
-rez_scale_h	X:\carrol_touch\ctouch18f8722\ctouch8722.c	455;"	l	line:455
-rez_scale_v	X:\carrol_touch\ctouch18f8722\ctouch8722.c	455;"	l	line:455
-rx_handler	X:\carrol_touch\ctouch18f8722\ctouch8722.c	113;"	p	line:113	file:	signature:(void)
-rx_handler	X:\carrol_touch\ctouch18f8722\ctouch8722.c	207;"	f	line:207	signature:(void)
-rx_int	X:\carrol_touch\ctouch18f8722\ctouch8722.c	199;"	f	line:199	signature:(void)
-scaled_char	X:\carrol_touch\ctouch18f8722\ctouch8722.c	454;"	l	line:454
-scrn_ptr	X:\carrol_touch\ctouch18f8722\ctouch8722.c	211;"	l	line:211	file:
-scrn_rec	X:\carrol_touch\ctouch18f8722\ctouch8722.c	192;"	v	line:192
-scrn_write	X:\carrol_touch\ctouch18f8722\ctouch8722.c	195;"	v	line:195
-setup_lcd	X:\carrol_touch\ctouch18f8722\ctouch8722.c	398;"	f	line:398	signature:(void)
-single_t	X:\carrol_touch\ctouch18f8722\ctouch8722.c	401;"	l	line:401
-speedup	X:\carrol_touch\ctouch18f8722\ctouch8722.c	137;"	v	line:137
-spinchr	X:\carrol_touch\ctouch18f8722\ctouch8722.c	179;"	v	line:179
-spinner	X:\carrol_touch\ctouch18f8722\ctouch8722.c	453;"	l	line:453
-start_delay	X:\carrol_touch\ctouch18f8722\ctouch8722.c	428;"	f	line:428	signature:(void)
-status_count	X:\carrol_touch\ctouch18f8722\ctouch8722.c	140;"	v	line:140
-tchar	X:\carrol_touch\ctouch18f8722\ctouch8722.c	186;"	v	line:186
-tmp_str	X:\carrol_touch\ctouch18f8722\ctouch8722.c	177;"	v	line:177
-touch_cam	X:\carrol_touch\ctouch18f8722\ctouch8722.c	362;"	f	line:362	signature:(void)
-touch_corner1	X:\carrol_touch\ctouch18f8722\ctouch8722.c	186;"	v	line:186
-touch_corner2	X:\carrol_touch\ctouch18f8722\ctouch8722.c	187;"	v	line:187
-touch_count	X:\carrol_touch\ctouch18f8722\ctouch8722.c	140;"	v	line:140
-touch_good	X:\carrol_touch\ctouch18f8722\ctouch8722.c	139;"	v	line:139
-touch_saved	X:\carrol_touch\ctouch18f8722\ctouch8722.c	186;"	v	line:186
-touch_sent	X:\carrol_touch\ctouch18f8722\ctouch8722.c	186;"	v	line:186
-uchar	X:\carrol_touch\ctouch18f8722\ctouch8722.c	186;"	v	line:186
-wdtdelay	X:\carrol_touch\ctouch18f8722\ctouch8722.c	353;"	f	line:353	signature:(unsigned int delay)
-write_touch_eeprom	X:\carrol_touch\ctouch18f8722\ctouch8722.c	334;"	f	line:334	signature:(unsigned char data, unsigned char count, unsigned int addr, unsigned int offset)
-y	X:\carrol_touch\ctouch18f8722\ctouch8722.c	135;"	v	line:135
-z	X:\carrol_touch\ctouch18f8722\ctouch8722.c	135;"	v	line:135
+ACK	X:\ctouch\ctouch8722.c	209;"	v	line:209
+AUTO_RESTART::FALSE	X:\ctouch\ctouch8722.c	181;"	d	line:181	file:
+BLINK_OFF::0b00001110	X:\ctouch\xlcd.h	53;"	d	line:53
+BLINK_ON::0b00001111	X:\ctouch\xlcd.h	52;"	d	line:52
+BLINK_RATE::20000	X:\ctouch\ctouch8722.c	179;"	d	line:179	file:
+BUF_SIZE::64	X:\ctouch\ctouch8722.c	168;"	d	line:168	file:
+BusyXLCD	X:\ctouch\xlcd.h	89;"	p	line:89	signature:(void)
+CAM	X:\ctouch\ctouch8722.c	209;"	v	line:209
+CAM_RELAY::LATAbits.LATA1	X:\ctouch\ctouch8722.c	187;"	d	line:187	file:
+CAM_RELAY_AUX::LATEbits.LATE1	X:\ctouch\ctouch8722.c	188;"	d	line:188	file:
+CAM_RELAY_TIME::LATEbits.LATE2	X:\ctouch\ctouch8722.c	189;"	d	line:189	file:
+CAP_SIZE::256	X:\ctouch\ctouch8722.c	169;"	d	line:169	file:
+CATCH	X:\ctouch\ctouch8722.c	206;"	v	line:206
+CATCH37	X:\ctouch\ctouch8722.c	207;"	v	line:207
+CATCH46	X:\ctouch\ctouch8722.c	207;"	v	line:207
+CMD_OVERFLOW::CMD_SIZE*12	X:\ctouch\ctouch8722.c	171;"	d	line:171	file:
+CMD_SIZE::2	X:\ctouch\ctouch8722.c	170;"	d	line:170	file:
+CORNER1	X:\ctouch\ctouch8722.c	209;"	v	line:209
+CORNER2	X:\ctouch\ctouch8722.c	209;"	v	line:209
+CURSOR_OFF::0b00001101	X:\ctouch\xlcd.h	51;"	d	line:51
+CURSOR_ON::0b00001111	X:\ctouch\xlcd.h	50;"	d	line:50
+DATA1	X:\ctouch\ctouch8722.c	208;"	v	line:208
+DATA2	X:\ctouch\ctouch8722.c	208;"	v	line:208
+DATA_PORT::PORTH	X:\ctouch\xlcd.h	34;"	d	line:34
+DOFF::0b00001011	X:\ctouch\xlcd.h	49;"	d	line:49
+DON::0b00001111	X:\ctouch\xlcd.h	48;"	d	line:48
+DO_CAP::FALSE	X:\ctouch\ctouch8722.c	164;"	d	line:164	file:
+DelayFor18TCY	X:\ctouch\xlcd.h	127;"	p	line:127	signature:(void)
+DelayPORXLCD	X:\ctouch\xlcd.h	128;"	p	line:128	signature:(void)
+DelayXLCD	X:\ctouch\xlcd.h	129;"	p	line:129	signature:(void)
+EIGHT_BIT::0b00111111	X:\ctouch\xlcd.h	63;"	d	line:63
+ELO_REV_H::4096	X:\ctouch\ctouch8722.c	174;"	d	line:174	file:
+ELO_SEQ::10	X:\ctouch\ctouch8722.c	173;"	d	line:173	file:
+ELO_SIZE::12	X:\ctouch\ctouch8722.c	172;"	d	line:172	file:
+ELO_SS_H_SCALE::0.483	X:\ctouch\ctouch8722.c	175;"	d	line:175	file:
+ELO_SS_V_SCALE::0.380	X:\ctouch\ctouch8722.c	176;"	d	line:176	file:
+E_PIN::LATHbits.LATH3	X:\ctouch\xlcd.h	44;"	d	line:44
+FALSE::0	X:\ctouch\ctouch8722.c	177;"	d	line:177	file:
+FOUR_BIT::0b00101111	X:\ctouch\xlcd.h	62;"	d	line:62
+GOOD_MAX::128	X:\ctouch\ctouch8722.c	183;"	d	line:183	file:
+INPACKET	X:\ctouch\ctouch8722.c	209;"	v	line:209
+INTTYPES	X:\ctouch\ctouch8722.c	149;"	d	line:149	file:
+JB::FALSE	X:\ctouch\ctouch8722.c	180;"	d	line:180	file:
+LEARN1	X:\ctouch\ctouch8722.c	208;"	v	line:208
+LEARN2	X:\ctouch\ctouch8722.c	209;"	v	line:209
+LED_UP	X:\ctouch\ctouch8722.c	206;"	v	line:206
+LINES_5X7::0b00111011	X:\ctouch\xlcd.h	66;"	d	line:66
+LINE_5X10::0b00110111	X:\ctouch\xlcd.h	65;"	d	line:65
+LINE_5X7::0b00110011	X:\ctouch\xlcd.h	64;"	d	line:64
+MAX_CAM_TIME::5	X:\ctouch\ctouch8722.c	184;"	d	line:184	file:
+MAX_CAM_TIMEOUT::30	X:\ctouch\ctouch8722.c	185;"	d	line:185	file:
+MAX_CAM_TOUCH::5	X:\ctouch\ctouch8722.c	186;"	d	line:186	file:
+MEM_MODEL::far	X:\ctouch\xlcd.h	69;"	d	line:69
+NEEDSETUP	X:\ctouch\ctouch8722.c	207;"	v	line:207
+OpenXLCD	X:\ctouch\xlcd.h	74;"	p	line:74	signature:(PARAM_SCLASS unsigned char)
+PARAM_SCLASS::auto	X:\ctouch\xlcd.h	68;"	d	line:68
+RS_PIN::LATHbits.LATH1	X:\ctouch\xlcd.h	42;"	d	line:42
+RW_PIN::LATHbits.LATH2	X:\ctouch\xlcd.h	40;"	d	line:40
+ReadAddrXLCD	X:\ctouch\xlcd.h	94;"	p	line:94	signature:(void)
+ReadDataXLCD	X:\ctouch\xlcd.h	99;"	p	line:99	signature:(void)
+SET_EMU::TRUE	X:\ctouch\ctouch8722.c	166;"	d	line:166	file:
+SHIFT_CUR_LEFT::0b00010011	X:\ctouch\xlcd.h	56;"	d	line:56
+SHIFT_CUR_RIGHT::0b00010111	X:\ctouch\xlcd.h	57;"	d	line:57
+SHIFT_DISP_LEFT::0b00011011	X:\ctouch\xlcd.h	58;"	d	line:58
+SHIFT_DISP_RIGHT::0b00011111	X:\ctouch\xlcd.h	59;"	d	line:59
+SINGLE_TOUCH::FALSE	X:\ctouch\ctouch8722.c	182;"	d	line:182	file:
+SetCGRamAddr	X:\ctouch\xlcd.h	79;"	p	line:79	signature:(PARAM_SCLASS unsigned char)
+SetDDRamAddr	X:\ctouch\xlcd.h	84;"	p	line:84	signature:(PARAM_SCLASS unsigned char)
+TIMERPACKET::41000	X:\ctouch\ctouch8722.c	190;"	d	line:190	file:
+TOUCH	X:\ctouch\ctouch8722.c	206;"	v	line:206
+TRIS_DATA_PORT::TRISH	X:\ctouch\xlcd.h	35;"	d	line:35
+TRIS_E::TRISHbits.TRISH3	X:\ctouch\xlcd.h	45;"	d	line:45
+TRIS_RS::TRISHbits.TRISH1	X:\ctouch\xlcd.h	43;"	d	line:43
+TRIS_RW::TRISHbits.TRISH2	X:\ctouch\xlcd.h	41;"	d	line:41
+TRUE::1	X:\ctouch\ctouch8722.c	178;"	d	line:178	file:
+TSTATUS	X:\ctouch\ctouch8722.c	207;"	v	line:207
+TS_TYPE::0	X:\ctouch\ctouch8722.c	165;"	d	line:165	file:
+Test_Screen	X:\ctouch\ctouch8722.c	601;"	f	line:601	signature:(void)
+UNTOUCH	X:\ctouch\ctouch8722.c	206;"	v	line:206
+UPPER	X:\ctouch\xlcd.h	31;"	d	line:31
+WriteCmdXLCD	X:\ctouch\xlcd.h	104;"	p	line:104	signature:(PARAM_SCLASS unsigned char)
+WriteDataXLCD	X:\ctouch\xlcd.h	109;"	p	line:109	signature:(PARAM_SCLASS char)
+__XLCD_H	X:\ctouch\xlcd.h	2;"	d	line:2
+alive_led	X:\ctouch\ctouch8722.c	202;"	m	line:202	struct:statustype	file:
+alive_led	X:\ctouch\ctouch8722.c	212;"	v	line:212
+build_date	X:\ctouch\ctouch8722.c	216;"	v	line:216
+build_time	X:\ctouch\ctouch8722.c	216;"	v	line:216
+c	X:\ctouch\ctouch8722.c	281;"	l	line:281
+c	X:\ctouch\ctouch8722.c	535;"	l	line:535
+c_idx	X:\ctouch\ctouch8722.c	205;"	v	line:205
+cam_time	X:\ctouch\ctouch8722.c	210;"	v	line:210
+checksum	X:\ctouch\ctouch8722.c	197;"	m	line:197	struct:reporttype	file:
+code_count	X:\ctouch\ctouch8722.c	557;"	l	line:557
+corner_skip	X:\ctouch\ctouch8722.c	257;"	v	line:257
+dcount	X:\ctouch\ctouch8722.c	478;"	l	line:478
+debug_port	X:\ctouch\ctouch8722.c	256;"	v	line:256
+do_cap	X:\ctouch\ctouch8722.c	282;"	l	line:282	file:
+do_emu	X:\ctouch\ctouch8722.c	209;"	v	line:209
+eep_ptr	X:\ctouch\ctouch8722.c	619;"	l	line:619
+eloSScmdout	X:\ctouch\ctouch8722.c	523;"	f	line:523	signature:(uint8_t elostr)
+elobuf	X:\ctouch\ctouch8722.c	217;"	v	line:217
+elocmdout	X:\ctouch\ctouch8722.c	512;"	f	line:512	signature:(uint8_t *elostr)
+elocodes_e0	X:\ctouch\ctouch8722.c	231;"	v	line:231
+elocodes_e1	X:\ctouch\ctouch8722.c	234;"	v	line:234
+elocodes_e2	X:\ctouch\ctouch8722.c	237;"	v	line:237
+elocodes_e3	X:\ctouch\ctouch8722.c	240;"	v	line:240
+elocodes_e4	X:\ctouch\ctouch8722.c	243;"	v	line:243
+elocodes_e5	X:\ctouch\ctouch8722.c	246;"	v	line:246
+elocodes_e6	X:\ctouch\ctouch8722.c	249;"	v	line:249
+elocodes_e7	X:\ctouch\ctouch8722.c	252;"	v	line:252
+elocodes_m	X:\ctouch\ctouch8722.c	222;"	v	line:222
+elocodes_s	X:\ctouch\ctouch8722.c	225;"	v	line:225
+elopacketout	X:\ctouch\ctouch8722.c	533;"	f	line:533	signature:(uint8_t *strptr, uint8_t strcount, uint8_t slow)
+headder	X:\ctouch\ctouch8722.c	195;"	m	line:195	struct:reporttype	file:
+host_ptr	X:\ctouch\ctouch8722.c	282;"	l	line:282	file:
+host_rec	X:\ctouch\ctouch8722.c	262;"	v	line:262
+host_write	X:\ctouch\ctouch8722.c	266;"	v	line:266
+i	X:\ctouch\ctouch8722.c	535;"	l	line:535
+idx	X:\ctouch\ctouch8722.c	283;"	l	line:283	file:
+int16_t	X:\ctouch\ctouch8722.c	157;"	t	line:157	file:
+int32_t	X:\ctouch\ctouch8722.c	158;"	t	line:158	file:
+int64_t	X:\ctouch\ctouch8722.c	159;"	t	line:159	file:
+int8_t	X:\ctouch\ctouch8722.c	156;"	t	line:156	file:
+j	X:\ctouch\ctouch8722.c	212;"	v	line:212
+junk	X:\ctouch\ctouch8722.c	282;"	l	line:282	file:
+main	X:\ctouch\ctouch8722.c	617;"	f	line:617	signature:(void)
+packettype	X:\ctouch\ctouch8722.c	192;"	t	line:192	file:
+putc1	X:\ctouch\ctouch8722.c	582;"	f	line:582	signature:(uint16_t c)
+putc2	X:\ctouch\ctouch8722.c	589;"	f	line:589	signature:(uint16_t c)
+putcXLCD::WriteDataXLCD	X:\ctouch\xlcd.h	114;"	d	line:114
+putrsXLCD	X:\ctouch\xlcd.h	124;"	p	line:124	signature:(PARAM_SCLASS const MEM_MODEL rom char *)
+putsXLCD	X:\ctouch\xlcd.h	119;"	p	line:119	signature:(PARAM_SCLASS char *)
+rawint_count	X:\ctouch\ctouch8722.c	202;"	m	line:202	struct:statustype	file:
+rawint_count	X:\ctouch\ctouch8722.c	211;"	v	line:211
+read_touch_eeprom	X:\ctouch\ctouch8722.c	470;"	f	line:470	signature:(uint16_t addr, uint16_t offset)
+reporttype	X:\ctouch\ctouch8722.c	194;"	s	line:194	file:
+reporttype	X:\ctouch\ctouch8722.c	199;"	t	line:199	file:
+restart_delay	X:\ctouch\ctouch8722.c	256;"	v	line:256
+resync_count	X:\ctouch\ctouch8722.c	202;"	m	line:202	struct:statustype	file:
+resync_count	X:\ctouch\ctouch8722.c	211;"	v	line:211
+rez_parm_h	X:\ctouch\ctouch8722.c	621;"	l	line:621
+rez_parm_v	X:\ctouch\ctouch8722.c	621;"	l	line:621
+rez_scale_h	X:\ctouch\ctouch8722.c	621;"	l	line:621
+rez_scale_h_ss	X:\ctouch\ctouch8722.c	622;"	l	line:622
+rez_scale_v	X:\ctouch\ctouch8722.c	621;"	l	line:621
+rez_scale_v_ss	X:\ctouch\ctouch8722.c	622;"	l	line:622
+rx_handler	X:\ctouch\ctouch8722.c	162;"	p	line:162	file:	signature:(void)
+rx_handler	X:\ctouch\ctouch8722.c	278;"	f	line:278	signature:(void)
+rx_int	X:\ctouch\ctouch8722.c	270;"	f	line:270	signature:(void)
+scaled_char	X:\ctouch\ctouch8722.c	620;"	l	line:620
+scrn_ptr	X:\ctouch\ctouch8722.c	282;"	l	line:282	file:
+scrn_rec	X:\ctouch\ctouch8722.c	263;"	v	line:263
+scrn_write	X:\ctouch\ctouch8722.c	266;"	v	line:266
+setup_lcd	X:\ctouch\ctouch8722.c	555;"	f	line:555	signature:(void)
+single_t	X:\ctouch\ctouch8722.c	558;"	l	line:558
+speedup	X:\ctouch\ctouch8722.c	205;"	v	line:205
+ssbuf	X:\ctouch\ctouch8722.c	217;"	v	line:217
+ssreport	X:\ctouch\ctouch8722.c	219;"	v	line:219
+start_delay	X:\ctouch\ctouch8722.c	596;"	f	line:596	signature:(void)
+status	X:\ctouch\ctouch8722.c	195;"	m	line:195	struct:reporttype	file:
+status	X:\ctouch\ctouch8722.c	220;"	v	line:220
+status_count	X:\ctouch\ctouch8722.c	202;"	m	line:202	struct:statustype	file:
+status_count	X:\ctouch\ctouch8722.c	211;"	v	line:211
+statustype	X:\ctouch\ctouch8722.c	201;"	s	line:201	file:
+statustype	X:\ctouch\ctouch8722.c	203;"	t	line:203	file:
+sum	X:\ctouch\ctouch8722.c	283;"	l	line:283	file:
+sum	X:\ctouch\ctouch8722.c	535;"	l	line:535
+tchar	X:\ctouch\ctouch8722.c	256;"	v	line:256
+timer	X:\ctouch\ctouch8722.c	280;"	l	line:280	file:
+timer0	X:\ctouch\ctouch8722.c	280;"	l	line:280	file:
+tohost	X:\ctouch\ctouch8722.c	198;"	m	line:198	struct:reporttype	file:
+touch_cam	X:\ctouch\ctouch8722.c	485;"	f	line:485	signature:(void)
+touch_corner1	X:\ctouch\ctouch8722.c	256;"	v	line:256
+touch_corner_timed	X:\ctouch\ctouch8722.c	257;"	v	line:257
+touch_count	X:\ctouch\ctouch8722.c	202;"	m	line:202	struct:statustype	file:
+touch_count	X:\ctouch\ctouch8722.c	211;"	v	line:211
+touch_good	X:\ctouch\ctouch8722.c	210;"	v	line:210
+touch_saved	X:\ctouch\ctouch8722.c	256;"	v	line:256
+touch_sent	X:\ctouch\ctouch8722.c	256;"	v	line:256
+uchar	X:\ctouch\ctouch8722.c	256;"	v	line:256
+uint16_t	X:\ctouch\ctouch8722.c	152;"	t	line:152	file:
+uint32_t	X:\ctouch\ctouch8722.c	153;"	t	line:153	file:
+uint64_t	X:\ctouch\ctouch8722.c	154;"	t	line:154	file:
+uint8_t	X:\ctouch\ctouch8722.c	151;"	t	line:151	file:
+wdtdelay	X:\ctouch\ctouch8722.c	476;"	f	line:476	signature:(uint16_t delay)
+write_touch_eeprom	X:\ctouch\ctouch8722.c	457;"	f	line:457	signature:(uint8_t data, uint8_t count, uint16_t addr, uint16_t offset)
+x_cord	X:\ctouch\ctouch8722.c	196;"	m	line:196	struct:reporttype	file:
+y_cord	X:\ctouch\ctouch8722.c	196;"	m	line:196	struct:reporttype	file:
+z_cord	X:\ctouch\ctouch8722.c	196;"	m	line:196	struct:reporttype	file:

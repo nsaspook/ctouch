@@ -34,7 +34,7 @@
 #pragma config STVREN = ON      // Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause Reset)
 #pragma config LVP = ON         // Single-Supply ICSP Enable bit (Single-Supply ICSP enabled)
 #pragma config BBSIZ = BB2K     // Boot Block Size Select bits (1K word (2 Kbytes) Boot Block size)
-#pragma config XINST = ON       // Extended Instruction Set Enable bit (Instruction set extension and Indexed Addressing mode
+#pragma config XINST = OFF       // Extended Instruction Set Enable bit (Instruction set extension and Indexed Addressing mode
 
 // CONFIG5L
 #pragma config CP0 = OFF        // Code Protection bit Block 0 (Block 0 (000800, 001000 or 002000-003FFFh) not code-protected)
@@ -79,18 +79,18 @@
 #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit (Boot Block (000000-007FFF, 000FFF or 001FFFh) not protected from table reads executed in other blocks)
 
 /*
- * This program converts the rs-232 output from a ELO Carroll-Touch touch-screen controller
+ * This program converts the rs-232 output from a ELO Carroll-Touch& accutouch SmartSet touch-screen controller
  * to a format that can be used with the Varian E220/E500 Implanter
- * The Carroll controller must be first programmed
+ * The touch controller must be first programmed
  * USART1 is the host comm port
  * USART2 is the touch-screen comm port
- * A jumper between PORTD pin6 and +vcc enables debug mode. REMOVE when done.
- * PORTD		switch input
+ *
+ * PRORTA, PORTE Camera, aux switching with touchs in target box
  * PORTJ		LED bar display
  * PORTH0		run flasher led onboard.
- * 2x16 LCD status panel and 8 led status lights.
+ * 8 led status lights.
  *
- * Fred Brooks, Microchip Inc , Aug 2009,2015
+ * Fred Brooks, Microchip Inc , Aug 2009,2016
  * Gresham, Oregon
  *
  *
@@ -133,6 +133,7 @@
 //				E1.21		Timed camera for left press, software smells
 //				E1.22		Support for SmartSet commands on newer touch panels
 //				E1.23		refactor
+//				E1.24		adjust newer screen size for better touch fit
 //				***
 
 #include <usart.h>
@@ -162,8 +163,8 @@ typedef signed long long int64_t;
 void rx_handler(void);
 
 #define	DO_CAP	FALSE			// save data for usarts 1&2, save to eeprom
-#define	TS_TYPE	0			// 0 for old CRT type screens, 1 for newer LCD screens
-#define SET_EMU	TRUE
+#define	TS_TYPE	0			// 0 for old CRT type screens, 1 for newer LCD screens with Carroll-Touch
+#define SET_EMU	TRUE			// emulate old CRT with SmartSet LCD touch
 
 #define BUF_SIZE 64
 #define	CAP_SIZE 256
@@ -173,7 +174,7 @@ void rx_handler(void);
 #define ELO_SEQ 10
 #define ELO_REV_H	4096
 #define ELO_SS_H_SCALE	0.483
-#define ELO_SS_V_SCALE	0.380
+#define ELO_SS_V_SCALE	0.370
 #define FALSE	0
 #define TRUE	1
 #define	BLINK_RATE	20000
@@ -206,7 +207,7 @@ volatile uint16_t c_idx = 0, speedup = 0;
 volatile uint8_t CATCH = FALSE, LED_UP = TRUE, TOUCH = FALSE, UNTOUCH = FALSE,
 	CATCH46 = FALSE, CATCH37 = FALSE, TSTATUS = FALSE, NEEDSETUP = FALSE,
 	DATA1 = FALSE, DATA2 = FALSE, LEARN1 = FALSE,
-	LEARN2 = FALSE, CORNER1 = FALSE, CORNER2 = FALSE, CAM = FALSE, do_emu = SET_EMU, ACK = FALSE, INPACKET = FALSE;
+	LEARN2 = FALSE, CORNER1 = FALSE, CORNER2 = FALSE, CAM = FALSE, do_emu_ss = SET_EMU, ACK = FALSE, INPACKET = FALSE;
 volatile uint8_t touch_good = 0, cam_time = 0;
 volatile int32_t touch_count = 0, resync_count = 0, rawint_count = 0, status_count = 0;
 int32_t j = 0, alive_led = 0;
@@ -321,7 +322,7 @@ void rx_handler(void)
 				LATJbits.LATJ4 = !LATJbits.LATJ4; // flash  led
 			}
 		} else {
-			if (do_emu) {
+			if (do_emu_ss) {
 				ssbuf[idx] = c;
 				switch (idx++) {
 				case 0: // start of touch controller packet, save data and compute checksum
@@ -557,7 +558,7 @@ void setup_lcd(void)
 	uint16_t code_count;
 	uint8_t single_t = SINGLE_TOUCH;
 
-	if (do_emu) {
+	if (do_emu_ss) {
 		elopacketout(elocodes_e0, ELO_SEQ, 0); // set touch packet spacing and timing
 		//elopacketout(elocodes_e2, ELO_SEQ, 0);
 		//elopacketout(elocodes_e2, ELO_SEQ, 1);
@@ -602,7 +603,7 @@ uint16_t Test_Screen(void)
 {
 	while (Busy2USART()) {
 	}; // wait until the usart is clear
-	if (do_emu) return TRUE;
+	if (do_emu_ss) return TRUE;
 	putc2(0x46);
 	wdtdelay(30000);
 	if (DATA2) {
@@ -628,7 +629,7 @@ void main(void)
 	TRISF = 0;
 	TRISB = 0;
 	TRISA = 0;
-	TRISD = 0xff;
+	TRISD = 0xff; // debug function removed
 	PORTH = 0;
 	LATE = 0;
 	CAM_RELAY_TIME = 0;
@@ -792,7 +793,7 @@ void main(void)
 			if (CATCH) { // send the buffered touch report
 				Delay10KTCYx(75); // 75 ms
 				putc1(0xFE); // send position report header to host
-				if (do_emu) {
+				if (do_emu_ss) {
 					ssreport.tohost = TRUE;
 					rez_parm_h = ((float) (ssreport.x_cord)) * rez_scale_h_ss;
 					rez_parm_v = ((float) (ssreport.y_cord)) * rez_scale_v_ss;
@@ -830,7 +831,7 @@ void main(void)
 			Delay10KTCYx(75); // 75 ms
 			rez_scale_h = 1.0; // LCD touch screen real H/V rez
 			rez_scale_v = 1.0;
-			if (do_emu) {
+			if (do_emu_ss) {
 				//elopacketout(elocodes_e5, ELO_SEQ, 0); // send a ACk query
 			} else {
 				putc2(0x3D); // send clear buffer to touch
