@@ -23,8 +23,10 @@
     </logicalFolder>
     <logicalFolder name="OtherFiles" displayName="Other Files" projectFiles="false">
       <itemPath>../CRTFIX E1.doc</itemPath>
-      <itemPath>../../README.txt.doc</itemPath>
-      <itemPath>../../program.pdf</itemPath>
+      <itemPath>../en-g6k-348800.pdf</itemPath>
+      <itemPath>../ET-BASE 8722 ICD2 ENG.pdf</itemPath>
+      <itemPath>../program.pdf</itemPath>
+      <itemPath>../README.txt.doc</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

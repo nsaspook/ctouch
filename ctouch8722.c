@@ -102,6 +102,12 @@
  * LCD  RS-232  5-1     uC port2
  * Male         2-3-rx
  *              3-2-tx
+ * 
+ * VGA converter box relay
+ * Omron 
+ * G6k-2P bottom view
+ * Pin		8 - gnd, wire tag 0, to RELAY output	pin 2 on connector for RA1, RE1 PORT OUTPUT
+ * Pin		1 + 5vdc,		Power PIN	pin 9 connector for RA or RE PORT VCC		 
  */
 //				***
 //				E0.94		Clean up the code and comments
