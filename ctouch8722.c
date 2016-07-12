@@ -218,7 +218,7 @@ volatile uint8_t touch_good = 0, cam_time = 0;
 volatile int32_t touch_count = 0, resync_count = 0, rawint_count = 0, status_count = 0;
 int32_t j = 0, alive_led = 0;
 
-#pragma idata bigdata
+//#pragma idata bigdata
 
 const rom int8_t *build_date = __DATE__, *build_time = __TIME__;
 volatile uint8_t elobuf[BUF_SIZE], ssbuf[BUF_SIZE];
@@ -328,7 +328,7 @@ void rx_handler(void)
 				LATJbits.LATJ4 = !LATJbits.LATJ4; // flash  led
 			}
 		} else {
-			if (do_emu_ss) {
+			if (do_emu_ss) { // Parse the SmartSet packet 
 				ssbuf[idx] = c;
 				switch (idx++) {
 				case 0: // start of touch controller packet, save data and compute checksum
@@ -365,7 +365,7 @@ void rx_handler(void)
 				sum += c;
 				DATA2 = TRUE; // usart is connected to data
 
-			} else {
+			} else { // Parse the CarrolTouch Packet
 				touch_good++; // chars received before a status report
 				LATEbits.LATE0 = 1; // flash external led
 				LATEbits.LATE7 = LATEbits.LATE0; // flash external led
@@ -564,15 +564,9 @@ void setup_lcd(void)
 	uint16_t code_count;
 	uint8_t single_t = SINGLE_TOUCH;
 
-	if (do_emu_ss) {
+	if (do_emu_ss) { // accu-touch controller
 		elopacketout(elocodes_e0, ELO_SEQ, 0); // set touch packet spacing and timing
-		//elopacketout(elocodes_e2, ELO_SEQ, 0);
-		//elopacketout(elocodes_e2, ELO_SEQ, 1);
-		//elopacketout(elocodes_e3, ELO_SEQ, 0);
-		//elopacketout(elocodes_e4, ELO_SEQ, 0);
-		//elopacketout(elocodes_e1, ELO_SEQ, 1);
-	} else {
-
+	} else { // carrol-touch controller
 		if (TS_TYPE == 1) single_t = FALSE;
 		for (code_count = 0; code_count < ELO_SIZE; code_count++) {
 			if (single_t) {
