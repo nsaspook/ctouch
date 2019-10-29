@@ -585,6 +585,12 @@ void start_delay(void)
 	wdtdelay(100000);
 }
 
+void emu_delay(void)
+{
+	LATHbits.LATH0 = 1;
+	wdtdelay(10000000);
+}
+
 uint16_t Test_Screen(void)
 {
 	while (Busy2USART()) {
@@ -621,6 +627,8 @@ void main(void)
 	LATE = 0;
 	LATGbits.LATG0 = 1; //set input reads to high unless jumper is on
 	do_emu_ss = PORTGbits.RG0;
+	if (do_emu_ss)
+		emu_delay();
 	CAM_RELAY_TIME = 0;
 	CAM_RELAY = 0;
 	touch_count = 0;

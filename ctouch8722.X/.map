@@ -1,5 +1,5 @@
 MPLINK 4.40, Linker
-Linker Map File - Created Mon Oct 17 11:52:09 2016
+Linker Map File - Created Tue Oct 29 12:13:03 2019
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -8,63 +8,63 @@ Linker Map File - Created Mon Oct 17 11:52:09 2016
            .code___init.o       code   0x000006    program   0x000002
              rx_interrupt       code   0x000008    program   0x000006
                    .cinit    romdata   0x00000e    program   0x00001a
-       .code_ctouch8722.o       code   0x000028    program   0x000e20
-                     PROG       code   0x000e48    program   0x0002f8
-               _cinit_scn       code   0x001140    program   0x00009e
-           .code_u2open.o       code   0x0011de    program   0x00008a
-           .code_u1open.o       code   0x001268    program   0x000084
-          .code_write_B.o       code   0x0012ec    program   0x000060
-           .code_read_B.o       code   0x00134c    program   0x00005c
-         .code_fxd3232u.o       code   0x0013a8    program   0x000048
-           .code_u2read.o       code   0x0013f0    program   0x00003e
-           .code_u1read.o       code   0x00142e    program   0x00003e
-          .code_t0write.o       code   0x00146c    program   0x000038
-           .code_t0open.o       code   0x0014a4    program   0x000038
-             D10KTCYXCODE       code   0x0014dc    program   0x00002e
-          .code_u2write.o       code   0x00150a    program   0x00002e
-          .code_u1write.o       code   0x001538    program   0x00002e
-             _startup_scn       code   0x001566    program   0x000020
-                    .code       code   0x001586    program   0x000020
-             .stringtable    romdata   0x0015a6    program   0x000015
-        .romdata___init.o    romdata   0x0015bb    program   0x000000
-        .idata_u1read.o_i    romdata   0x0015bb    program   0x000000
-        .romdata_u1read.o    romdata   0x0015bb    program   0x000000
-        .idata___init.o_i    romdata   0x0015bb    program   0x000000
-        .idata_u2read.o_i    romdata   0x0015bb    program   0x000000
-       .romdata_write_B.o    romdata   0x0015bb    program   0x000000
-        .romdata_u2read.o    romdata   0x0015bb    program   0x000000
-       .idata_write_B.o_i    romdata   0x0015bb    program   0x000000
-        .idata_read_B.o_i    romdata   0x0015bb    program   0x000000
-        .romdata_read_B.o    romdata   0x0015bb    program   0x000000
-       .romdata_t0write.o    romdata   0x0015bb    program   0x000000
-       .idata_t0write.o_i    romdata   0x0015bb    program   0x000000
-        .idata_u1defs.o_i    romdata   0x0015bb    program   0x000000
-        .romdata_u1defs.o    romdata   0x0015bb    program   0x000000
-        .idata_u2defs.o_i    romdata   0x0015bb    program   0x000000
-        .romdata_u2defs.o    romdata   0x0015bb    program   0x000000
-       .idata_u1write.o_i    romdata   0x0015bb    program   0x000000
-       .romdata_u1write.o    romdata   0x0015bb    program   0x000000
-       .idata_u2write.o_i    romdata   0x0015bb    program   0x000000
-       .romdata_u2write.o    romdata   0x0015bb    program   0x000000
-        .idata_c018iz.o_i    romdata   0x0015bb    program   0x000000
-        .romdata_c018iz.o    romdata   0x0015bb    program   0x000000
-      .idata_busy_eep.o_i    romdata   0x0015bb    program   0x000000
-      .romdata_busy_eep.o    romdata   0x0015bb    program   0x000000
-      .idata_fxd3232u.o_i    romdata   0x0015bb    program   0x000000
-      .romdata_fxd3232u.o    romdata   0x0015bb    program   0x000000
-        .romdata_t0open.o    romdata   0x0015bb    program   0x000000
-        .idata_t0open.o_i    romdata   0x0015bb    program   0x000000
-        .romdata_u2open.o    romdata   0x0015bb    program   0x000000
-        .idata_u1open.o_i    romdata   0x0015bb    program   0x000000
-        .romdata_u1open.o    romdata   0x0015bb    program   0x000000
-        .idata_u2open.o_i    romdata   0x0015bb    program   0x000000
-         .code_busy_eep.o       code   0x0015bc    program   0x000006
-           .code_c018iz.o       code   0x0015bc    program   0x000000
-           .code_u1defs.o       code   0x0015bc    program   0x000000
-           .code_u2defs.o       code   0x0015bc    program   0x000000
-    .romdata_ctouch8722.o    romdata   0x0015c2    program   0x000004
-                 sddata_i    romdata   0x0015c6    program   0x000200
-    .idata_ctouch8722.o_i    romdata   0x0017c6    program   0x0000c6
+       .code_ctouch8722.o       code   0x000028    program   0x000e3a
+                     PROG       code   0x000e62    program   0x0002f8
+               _cinit_scn       code   0x00115a    program   0x00009e
+           .code_u2open.o       code   0x0011f8    program   0x00008a
+           .code_u1open.o       code   0x001282    program   0x000084
+          .code_write_B.o       code   0x001306    program   0x000060
+           .code_read_B.o       code   0x001366    program   0x00005c
+         .code_fxd3232u.o       code   0x0013c2    program   0x000048
+           .code_u2read.o       code   0x00140a    program   0x00003e
+           .code_u1read.o       code   0x001448    program   0x00003e
+          .code_t0write.o       code   0x001486    program   0x000038
+           .code_t0open.o       code   0x0014be    program   0x000038
+             D10KTCYXCODE       code   0x0014f6    program   0x00002e
+          .code_u2write.o       code   0x001524    program   0x00002e
+          .code_u1write.o       code   0x001552    program   0x00002e
+             _startup_scn       code   0x001580    program   0x000020
+                    .code       code   0x0015a0    program   0x000020
+             .stringtable    romdata   0x0015c0    program   0x000015
+        .romdata___init.o    romdata   0x0015d5    program   0x000000
+        .idata_u1read.o_i    romdata   0x0015d5    program   0x000000
+        .romdata_u1read.o    romdata   0x0015d5    program   0x000000
+        .idata___init.o_i    romdata   0x0015d5    program   0x000000
+        .idata_u2read.o_i    romdata   0x0015d5    program   0x000000
+       .romdata_write_B.o    romdata   0x0015d5    program   0x000000
+        .romdata_u2read.o    romdata   0x0015d5    program   0x000000
+       .idata_write_B.o_i    romdata   0x0015d5    program   0x000000
+        .idata_read_B.o_i    romdata   0x0015d5    program   0x000000
+        .romdata_read_B.o    romdata   0x0015d5    program   0x000000
+       .romdata_t0write.o    romdata   0x0015d5    program   0x000000
+       .idata_t0write.o_i    romdata   0x0015d5    program   0x000000
+        .idata_u1defs.o_i    romdata   0x0015d5    program   0x000000
+        .romdata_u1defs.o    romdata   0x0015d5    program   0x000000
+        .idata_u2defs.o_i    romdata   0x0015d5    program   0x000000
+        .romdata_u2defs.o    romdata   0x0015d5    program   0x000000
+       .idata_u1write.o_i    romdata   0x0015d5    program   0x000000
+       .romdata_u1write.o    romdata   0x0015d5    program   0x000000
+       .idata_u2write.o_i    romdata   0x0015d5    program   0x000000
+       .romdata_u2write.o    romdata   0x0015d5    program   0x000000
+        .idata_c018iz.o_i    romdata   0x0015d5    program   0x000000
+        .romdata_c018iz.o    romdata   0x0015d5    program   0x000000
+      .idata_busy_eep.o_i    romdata   0x0015d5    program   0x000000
+      .romdata_busy_eep.o    romdata   0x0015d5    program   0x000000
+      .idata_fxd3232u.o_i    romdata   0x0015d5    program   0x000000
+      .romdata_fxd3232u.o    romdata   0x0015d5    program   0x000000
+        .romdata_t0open.o    romdata   0x0015d5    program   0x000000
+        .idata_t0open.o_i    romdata   0x0015d5    program   0x000000
+        .romdata_u2open.o    romdata   0x0015d5    program   0x000000
+        .idata_u1open.o_i    romdata   0x0015d5    program   0x000000
+        .romdata_u1open.o    romdata   0x0015d5    program   0x000000
+        .idata_u2open.o_i    romdata   0x0015d5    program   0x000000
+         .code_busy_eep.o       code   0x0015d6    program   0x000006
+           .code_c018iz.o       code   0x0015d6    program   0x000000
+           .code_u1defs.o       code   0x0015d6    program   0x000000
+           .code_u2defs.o       code   0x0015d6    program   0x000000
+    .romdata_ctouch8722.o    romdata   0x0015dc    program   0x000004
+                 sddata_i    romdata   0x0015e0    program   0x000200
+    .idata_ctouch8722.o_i    romdata   0x0017e0    program   0x0000c6
 .config_300001_ctouch8722.o    romdata   0x300001    program   0x000001
 .config_300002_ctouch8722.o    romdata   0x300002    program   0x000001
 .config_300003_ctouch8722.o    romdata   0x300003    program   0x000001
@@ -125,117 +125,118 @@ Linker Map File - Created Mon Oct 17 11:52:09 2016
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x0015ba      
-                            0x0015bc    0x00188b      
+                            0x000000    0x0015d4      
+                            0x0015d6    0x0018a5      
                             0x300001    0x300006      
                             0x300008    0x30000d      
-            6295 out of 132120 program addresses used, program memory utilization is 4%
+            6321 out of 132120 program addresses used, program memory utilization is 4%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                 Busy_eep   0x0015bc    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\busy_eep.c
-                   D10K_1   0x0014e8    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-                    D10Kl   0x0014f4    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-                    D10Kx   0x0014e6    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-                   D3232S   0x000f9e    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                D3232SNEG   0x000fac    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                 D3232SOK   0x000fa8    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                  D3232SX   0x000fcc    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                  DA3232S   0x000f88    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-             Delay10KTCYx   0x0014dc    program     extern C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-                 FLO0832S   0x000e4c    program     extern C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
-                 FLO0832U   0x000e48    program     extern C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
-                 FLO1632S   0x000e6e    program     extern C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
-                 FLO1632U   0x000e6a    program     extern C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
-                    FPM32   0x000e94    program     extern C:\MCC18\v3_39\src\traditional\math\mulFP.asm
-                 FXD3232S   0x000f6e    program     extern C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                 FXD3232U   0x0013a8    program     extern C:\MCC18\v3_39\src\traditional\math\fxd3232u.c
-                  INT3216   0x000fd6    program     extern C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-               Open1USART   0x001268    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1open.c
-               Open2USART   0x0011de    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2open.c
-               OpenTimer0   0x0014a4    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0open.c
-               Read1USART   0x00142e    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1read.c
-               Read2USART   0x0013f0    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2read.c
-               Read_b_eep   0x00134c    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\read_B.c
-              Test_Screen   0x0005f8    program     extern /fred/ctouch/ctouch8722.c
-              Write1USART   0x001538    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1write.c
-              Write2USART   0x00150a    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2write.c
-              WriteTimer0   0x00146c    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0write.c
-              Write_b_eep   0x0012ec    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\write_B.c
-       _D10KTCYXCODE_0010   0x0014ec    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_001C   0x0014f8    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-                 __FpExit   0x001040    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-                 __FpPack   0x00106c    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-            __FpReturnNaN   0x001034    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-         __FpReturnNegInf   0x001046    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-        __FpReturnNegZero   0x00105e    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-         __FpReturnPosInf   0x00104c    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-        __FpReturnPosZero   0x001066    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-        __FpReturnSignInf   0x001042    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-       __FpReturnSignZero   0x00105a    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-              __FpReturnW   0x0010c4    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-              __FpUnPackA   0x0010e4    program     extern C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-              __FpUnPackB   0x001114    program     extern C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-         ___else_lbl00128   0x00095c    program     static                          
-         ___else_lbl00133   0x0009a8    program     static                          
-         ___else_lbl00136   0x000a22    program     static                          
-         ___else_lbl00139   0x000b86    program     static                          
-         ___else_lbl00141   0x000c86    program     static                          
-         ___else_lbl00144   0x000d0a    program     static                          
+                 Busy_eep   0x0015d6    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\busy_eep.c
+                   D10K_1   0x001502    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+                    D10Kl   0x00150e    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+                    D10Kx   0x001500    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+                   D3232S   0x000fb8    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                D3232SNEG   0x000fc6    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                 D3232SOK   0x000fc2    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                  D3232SX   0x000fe6    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                  DA3232S   0x000fa2    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+             Delay10KTCYx   0x0014f6    program     extern C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+                 FLO0832S   0x000e66    program     extern C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
+                 FLO0832U   0x000e62    program     extern C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
+                 FLO1632S   0x000e88    program     extern C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
+                 FLO1632U   0x000e84    program     extern C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
+                    FPM32   0x000eae    program     extern C:\MCC18\v3_39\src\traditional\math\mulFP.asm
+                 FXD3232S   0x000f88    program     extern C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                 FXD3232U   0x0013c2    program     extern C:\MCC18\v3_39\src\traditional\math\fxd3232u.c
+                  INT3216   0x000ff0    program     extern C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+               Open1USART   0x001282    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1open.c
+               Open2USART   0x0011f8    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2open.c
+               OpenTimer0   0x0014be    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0open.c
+               Read1USART   0x001448    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1read.c
+               Read2USART   0x00140a    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2read.c
+               Read_b_eep   0x001366    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\read_B.c
+              Test_Screen   0x000608    program     extern /fred/ctouch/ctouch8722.c
+              Write1USART   0x001552    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1write.c
+              Write2USART   0x001524    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2write.c
+              WriteTimer0   0x001486    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0write.c
+              Write_b_eep   0x001306    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\write_B.c
+       _D10KTCYXCODE_0010   0x001506    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x001512    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+                 __FpExit   0x00105a    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+                 __FpPack   0x001086    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+            __FpReturnNaN   0x00104e    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+         __FpReturnNegInf   0x001060    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+        __FpReturnNegZero   0x001078    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+         __FpReturnPosInf   0x001066    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+        __FpReturnPosZero   0x001080    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+        __FpReturnSignInf   0x00105c    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+       __FpReturnSignZero   0x001074    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+              __FpReturnW   0x0010de    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+              __FpUnPackA   0x0010fe    program     extern C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+              __FpUnPackB   0x00112e    program     extern C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+         ___else_lbl00130   0x000974    program     static                          
+         ___else_lbl00135   0x0009c0    program     static                          
+         ___else_lbl00138   0x000a3a    program     static                          
+         ___else_lbl00141   0x000b9e    program     static                          
+         ___else_lbl00143   0x000c9e    program     static                          
+         ___else_lbl00146   0x000d22    program     static                          
           ___for_lbl00049   0x00040e    program     static                          
           ___for_lbl00050   0x000418    program     static                          
           ___for_lbl00051   0x0003ee    program     static                          
-           ___if_lbl00101   0x000708    program     static                          
-           ___if_lbl00102   0x000728    program     static                          
-           ___if_lbl00114   0x000856    program     static                          
-           ___if_lbl00117   0x0008ce    program     static                          
-           ___if_lbl00118   0x0008e4    program     static                          
-           ___if_lbl00119   0x0008fa    program     static                          
-           ___if_lbl00120   0x00091e    program     static                          
-           ___if_lbl00121   0x00091e    program     static                          
-           ___if_lbl00126   0x000978    program     static                          
-           ___if_lbl00127   0x000978    program     static                          
-           ___if_lbl00129   0x000978    program     static                          
-           ___if_lbl00131   0x0009f2    program     static                          
-           ___if_lbl00132   0x0009f2    program     static                          
-           ___if_lbl00134   0x000a50    program     static                          
-           ___if_lbl00135   0x000a50    program     static                          
-           ___if_lbl00137   0x000a5a    program     static                          
-           ___if_lbl00138   0x000c64    program     static                          
-           ___if_lbl00140   0x000cb8    program     static                          
-           ___if_lbl00142   0x000cb8    program     static                          
-           ___if_lbl00143   0x000d16    program     static                          
-           ___if_lbl00145   0x000d54    program     static                          
-           ___if_lbl00146   0x000d70    program     static                          
-           ___if_lbl00147   0x000d76    program     static                          
-           ___if_lbl00148   0x000d80    program     static                          
-           ___if_lbl00149   0x000d8a    program     static                          
-           ___if_lbl00150   0x000d94    program     static                          
-       ___return_lbl00000   0x00139c    program     static                          
-       ___return_lbl00000   0x000004    program     static                          
-       ___return_lbl00000   0x0013ee    program     static                          
+           ___if_lbl00102   0x0006f0    program     static                          
+           ___if_lbl00103   0x000728    program     static                          
+           ___if_lbl00104   0x000748    program     static                          
+           ___if_lbl00116   0x000876    program     static                          
+           ___if_lbl00119   0x0008e6    program     static                          
+           ___if_lbl00120   0x0008fc    program     static                          
+           ___if_lbl00121   0x000912    program     static                          
+           ___if_lbl00122   0x000936    program     static                          
+           ___if_lbl00123   0x000936    program     static                          
+           ___if_lbl00128   0x000990    program     static                          
+           ___if_lbl00129   0x000990    program     static                          
+           ___if_lbl00131   0x000990    program     static                          
+           ___if_lbl00133   0x000a0a    program     static                          
+           ___if_lbl00134   0x000a0a    program     static                          
+           ___if_lbl00136   0x000a68    program     static                          
+           ___if_lbl00137   0x000a68    program     static                          
+           ___if_lbl00139   0x000a72    program     static                          
+           ___if_lbl00140   0x000c7c    program     static                          
+           ___if_lbl00142   0x000cd0    program     static                          
+           ___if_lbl00144   0x000cd0    program     static                          
+           ___if_lbl00145   0x000d2e    program     static                          
+           ___if_lbl00147   0x000d6c    program     static                          
+           ___if_lbl00148   0x000d88    program     static                          
+           ___if_lbl00149   0x000d8e    program     static                          
+           ___if_lbl00150   0x000d98    program     static                          
+           ___if_lbl00151   0x000da2    program     static                          
+           ___if_lbl00152   0x000dac    program     static                          
+       ___return_lbl00000   0x001408    program     static                          
        ___return_lbl00000   0x00000c    program     static                          
-       ___return_lbl00001   0x001584    program     static                          
-       ___return_lbl00002   0x0011dc    program     static                          
+       ___return_lbl00000   0x0013b6    program     static                          
+       ___return_lbl00000   0x000004    program     static                          
+       ___return_lbl00001   0x00159e    program     static                          
+       ___return_lbl00002   0x0011f6    program     static                          
        ___return_lbl00048   0x000418    program     static                          
-       ___return_lbl00100   0x000d98    program     static                          
-        ___while_lbl00103   0x000772    program     static                          
-        ___while_lbl00104   0x00077c    program     static                          
-        ___while_lbl00105   0x00077c    program     static                          
-        ___while_lbl00106   0x000786    program     static                          
-        ___while_lbl00107   0x0007a0    program     static                          
-        ___while_lbl00108   0x000858    program     static                          
-        ___while_lbl00110   0x0007b6    program     static                          
-        ___while_lbl00111   0x00084a    program     static                          
-        ___while_lbl00112   0x00084e    program     static                          
-        ___while_lbl00113   0x000856    program     static                          
-        ___while_lbl00115   0x00085a    program     static                          
-        ___while_lbl00116   0x000d98    program     static                          
-        ___while_lbl00123   0x000958    program     static                          
-        ___while_lbl00124   0x00095a    program     static                          
+       ___return_lbl00101   0x000db0    program     static                          
+        ___while_lbl00105   0x000792    program     static                          
+        ___while_lbl00106   0x00079c    program     static                          
+        ___while_lbl00107   0x00079c    program     static                          
+        ___while_lbl00108   0x0007a6    program     static                          
+        ___while_lbl00109   0x0007c0    program     static                          
+        ___while_lbl00110   0x000878    program     static                          
+        ___while_lbl00112   0x0007d6    program     static                          
+        ___while_lbl00113   0x00086a    program     static                          
+        ___while_lbl00114   0x00086e    program     static                          
+        ___while_lbl00115   0x000876    program     static                          
+        ___while_lbl00117   0x00087a    program     static                          
+        ___while_lbl00118   0x000db0    program     static                          
+        ___while_lbl00125   0x000970    program     static                          
+        ___while_lbl00126   0x000972    program     static                          
                __config_0   0x300001    program     static /fred/ctouch/ctouch8722.c
                __config_1   0x300002    program     static /fred/ctouch/ctouch8722.c
               __config_10   0x30000c    program     static /fred/ctouch/ctouch8722.c
@@ -249,101 +250,105 @@ Linker Map File - Created Mon Oct 17 11:52:09 2016
                __config_8   0x30000a    program     static /fred/ctouch/ctouch8722.c
                __config_9   0x30000b    program     static /fred/ctouch/ctouch8722.c
                    __init   0x000006    program     extern C:\MCC18\v3_39\src\traditional\stdclib\__init.c
-                   __pa_0   0x000dac    program     static /fred/ctouch/ctouch8722.c
-                   __pa_1   0x000db6    program     static /fred/ctouch/ctouch8722.c
-                  __pa_10   0x000e26    program     static /fred/ctouch/ctouch8722.c
-                  __pa_11   0x000e30    program     static /fred/ctouch/ctouch8722.c
-                  __pa_12   0x000e3c    program     static /fred/ctouch/ctouch8722.c
-                   __pa_2   0x000dbe    program     static /fred/ctouch/ctouch8722.c
-                   __pa_3   0x000dc6    program     static /fred/ctouch/ctouch8722.c
-                   __pa_4   0x000dd8    program     static /fred/ctouch/ctouch8722.c
-                   __pa_5   0x000de4    program     static /fred/ctouch/ctouch8722.c
-                   __pa_6   0x000df4    program     static /fred/ctouch/ctouch8722.c
-                   __pa_7   0x000dfc    program     static /fred/ctouch/ctouch8722.c
-                   __pa_8   0x000e0a    program     static /fred/ctouch/ctouch8722.c
-                   __pa_9   0x000e18    program     static /fred/ctouch/ctouch8722.c
-               __string_0   0x0015af    program     static /fred/ctouch/ctouch8722.c
-               __string_1   0x0015a6    program     static /fred/ctouch/ctouch8722.c
-              __tmplbl_10   0x0007b2    program     static                          
-              __tmplbl_11   0x0007ac    program     static                          
-              __tmplbl_12   0x0008ae    program     static                          
-              __tmplbl_13   0x0008ca    program     static                          
-              __tmplbl_14   0x0008e0    program     static                          
-              __tmplbl_15   0x0008f6    program     static                          
-              __tmplbl_16   0x000952    program     static                          
-              __tmplbl_17   0x00094c    program     static                          
-              __tmplbl_18   0x00096e    program     static                          
-              __tmplbl_19   0x000968    program     static                          
-              __tmplbl_20   0x00098a    program     static                          
-              __tmplbl_21   0x00097e    program     static                          
-              __tmplbl_22   0x000a0c    program     static                          
-              __tmplbl_23   0x000a3e    program     static                          
-              __tmplbl_31   0x000db6    program     static                          
-              __tmplbl_32   0x000db6    program     static                          
-              __tmplbl_35   0x000db6    program     static                          
-              __tmplbl_38   0x000db6    program     static                          
-              __tmplbl_39   0x000db6    program     static                          
-              __tmplbl_40   0x000db6    program     static                          
-              __tmplbl_43   0x000e3c    program     static                          
-              __tmplbl_45   0x00089e    program     static                          
-            __zero_memory   0x001586    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
-                _do_cinit   0x001140    program     extern C:\MCC18\v3_39\src\traditional\startup\c018iz.c
+                   __pa_0   0x000dc4    program     static /fred/ctouch/ctouch8722.c
+                   __pa_1   0x000dce    program     static /fred/ctouch/ctouch8722.c
+                  __pa_10   0x000e3e    program     static /fred/ctouch/ctouch8722.c
+                  __pa_11   0x000e40    program     static /fred/ctouch/ctouch8722.c
+                  __pa_12   0x000e4a    program     static /fred/ctouch/ctouch8722.c
+                  __pa_13   0x000e56    program     static /fred/ctouch/ctouch8722.c
+                   __pa_2   0x000dd6    program     static /fred/ctouch/ctouch8722.c
+                   __pa_3   0x000dde    program     static /fred/ctouch/ctouch8722.c
+                   __pa_4   0x000df0    program     static /fred/ctouch/ctouch8722.c
+                   __pa_5   0x000dfc    program     static /fred/ctouch/ctouch8722.c
+                   __pa_6   0x000e0c    program     static /fred/ctouch/ctouch8722.c
+                   __pa_7   0x000e14    program     static /fred/ctouch/ctouch8722.c
+                   __pa_8   0x000e22    program     static /fred/ctouch/ctouch8722.c
+                   __pa_9   0x000e30    program     static /fred/ctouch/ctouch8722.c
+               __string_0   0x0015c9    program     static /fred/ctouch/ctouch8722.c
+               __string_1   0x0015c0    program     static /fred/ctouch/ctouch8722.c
+              __tmplbl_10   0x0007d2    program     static                          
+              __tmplbl_11   0x0007cc    program     static                          
+              __tmplbl_12   0x0008c6    program     static                          
+              __tmplbl_13   0x0008e2    program     static                          
+              __tmplbl_14   0x0008f8    program     static                          
+              __tmplbl_15   0x00090e    program     static                          
+              __tmplbl_16   0x00096a    program     static                          
+              __tmplbl_17   0x000964    program     static                          
+              __tmplbl_18   0x000986    program     static                          
+              __tmplbl_19   0x000980    program     static                          
+              __tmplbl_20   0x0009a2    program     static                          
+              __tmplbl_21   0x000996    program     static                          
+              __tmplbl_22   0x000a24    program     static                          
+              __tmplbl_23   0x000a56    program     static                          
+              __tmplbl_31   0x000dce    program     static                          
+              __tmplbl_32   0x000dce    program     static                          
+              __tmplbl_35   0x000dce    program     static                          
+              __tmplbl_38   0x000dce    program     static                          
+              __tmplbl_39   0x000dce    program     static                          
+              __tmplbl_40   0x000dce    program     static                          
+              __tmplbl_42   0x000dce    program     static                          
+              __tmplbl_44   0x000e3e    program     static                          
+              __tmplbl_45   0x000e3e    program     static                          
+              __tmplbl_47   0x0008b6    program     static                          
+            __zero_memory   0x0015a0    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
+                _do_cinit   0x00115a    program     extern C:\MCC18\v3_39\src\traditional\startup\c018iz.c
                    _entry   0x000000    program     extern C:\MCC18\v3_39\src\traditional\startup\c018iz.c
-                   _false   0x0013ea    program     static                          
-                 _startup   0x001566    program     extern C:\MCC18\v3_39\src\traditional\startup\c018iz.c
-                compare_l   0x00159c    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
-                copy_loop   0x0011b2    program     static                          
-            copy_one_byte   0x0011b8    program     static                          
-                  corners   0x0015c2    program     extern /fred/ctouch/ctouch.h    
-                     done   0x0011dc    program     static                          
-             done_copying   0x0011c6    program     static                          
+                   _false   0x001404    program     static                          
+                 _startup   0x001580    program     extern C:\MCC18\v3_39\src\traditional\startup\c018iz.c
+                compare_l   0x0015b6    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
+                copy_loop   0x0011cc    program     static                          
+            copy_one_byte   0x0011d2    program     static                          
+                  corners   0x0015dc    program     extern /fred/ctouch/ctouch.h    
+                     done   0x0011f6    program     static                          
+             done_copying   0x0011e0    program     static                          
               eloSScmdout   0x0004ac    program     extern /fred/ctouch/ctouch8722.c
                 elocmdout   0x000488    program     extern /fred/ctouch/ctouch8722.c
              elopacketout   0x0004ca    program     extern /fred/ctouch/ctouch8722.c
-                 jANotInf   0x000eb2    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
-              jBothFinite   0x000ec0    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
-             jBothNotZero   0x000ecc    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
-                    jExit   0x001032    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                jHaveZero   0x000ec8    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
-                jI2F08Beg   0x000e56    program     static C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
-                jI2F16Beg   0x000e7e    program     static C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
-                    jLoop   0x001012    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                jLoopExit   0x001022    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                     jMax   0x000fe6    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                  jMaxNeg   0x000ff4    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                  jMaxPos   0x000fea    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                  jNotInf   0x001002    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                  jPkLoop   0x00107a    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-             jPkRoundDone   0x0010c4    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-               jPkRoundIt   0x0010ac    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-             jPkShiftDone   0x001096    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-           jReturnPosInf0   0x001050    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-                  jUnpkA1   0x0010ee    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                  jUnpkA2   0x001106    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                 jUnpkANZ   0x0010fc    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                  jUnpkB1   0x00111e    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                  jUnpkB2   0x001136    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                 jUnpkBNZ   0x00112c    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                 jUnpkNaN   0x001110    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                    jZero   0x000ffc    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-               jZero1and2   0x001054    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-                     loop   0x0013b6    program     static                          
-                     loop   0x00157a    program     static                          
-                   loop_h   0x001594    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
-                   loop_l   0x00159e    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
-                     main   0x000626    program     extern /fred/ctouch/ctouch8722.c
+                emu_delay   0x0005fc    program     extern /fred/ctouch/ctouch8722.c
+                 jANotInf   0x000ecc    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
+              jBothFinite   0x000eda    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
+             jBothNotZero   0x000ee6    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
+                    jExit   0x00104c    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                jHaveZero   0x000ee2    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
+                jI2F08Beg   0x000e70    program     static C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
+                jI2F16Beg   0x000e98    program     static C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
+                    jLoop   0x00102c    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                jLoopExit   0x00103c    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                     jMax   0x001000    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                  jMaxNeg   0x00100e    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                  jMaxPos   0x001004    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                  jNotInf   0x00101c    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                  jPkLoop   0x001094    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+             jPkRoundDone   0x0010de    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+               jPkRoundIt   0x0010c6    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+             jPkShiftDone   0x0010b0    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+           jReturnPosInf0   0x00106a    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+                  jUnpkA1   0x001108    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                  jUnpkA2   0x001120    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                 jUnpkANZ   0x001116    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                  jUnpkB1   0x001138    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                  jUnpkB2   0x001150    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                 jUnpkBNZ   0x001146    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                 jUnpkNaN   0x00112a    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                    jZero   0x001016    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+               jZero1and2   0x00106e    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+                     loop   0x001594    program     static                          
+                     loop   0x0013d0    program     static                          
+                   loop_h   0x0015ae    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
+                   loop_l   0x0015b8    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
+                     main   0x000636    program     extern /fred/ctouch/ctouch8722.c
                     putc1   0x0005c4    program     extern /fred/ctouch/ctouch8722.c
-                    putc2   0x0005da    program     extern /fred/ctouch/ctouch8722.c
+                    putc2   0x0005dc    program     extern /fred/ctouch/ctouch8722.c
         read_touch_eeprom   0x0003b8    program     extern /fred/ctouch/ctouch8722.c
                rx_handler   0x000028    program     extern /fred/ctouch/ctouch8722.c
                    rx_int   0x000008    program     extern /fred/ctouch/ctouch8722.c
                 setup_lcd   0x000544    program     extern /fred/ctouch/ctouch8722.c
-              start_delay   0x0005ee    program     extern /fred/ctouch/ctouch8722.c
-                     test   0x00115a    program     static                          
+              start_delay   0x0005f2    program     extern /fred/ctouch/ctouch8722.c
+                     test   0x001174    program     static                          
                 touch_cam   0x00042c    program     extern /fred/ctouch/ctouch8722.c
                  wdtdelay   0x0003de    program     extern /fred/ctouch/ctouch8722.c
        write_touch_eeprom   0x000342    program     extern /fred/ctouch/ctouch8722.c
-               zero_block   0x001594    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
+               zero_block   0x0015ae    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
                       ACK   0x000e14       data     extern /fred/ctouch/ctouch8722.c
                    ADCON0   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
@@ -768,183 +773,188 @@ Linker Map File - Created Mon Oct 17 11:52:09 2016
              elopacketout   0x0004ca    program     extern /fred/ctouch/ctouch8722.c
                 setup_lcd   0x000544    program     extern /fred/ctouch/ctouch8722.c
                     putc1   0x0005c4    program     extern /fred/ctouch/ctouch8722.c
-                    putc2   0x0005da    program     extern /fred/ctouch/ctouch8722.c
-              start_delay   0x0005ee    program     extern /fred/ctouch/ctouch8722.c
-              Test_Screen   0x0005f8    program     extern /fred/ctouch/ctouch8722.c
-                     main   0x000626    program     extern /fred/ctouch/ctouch8722.c
-           ___if_lbl00101   0x000708    program     static                          
-           ___if_lbl00102   0x000728    program     static                          
-        ___while_lbl00103   0x000772    program     static                          
-        ___while_lbl00104   0x00077c    program     static                          
-        ___while_lbl00105   0x00077c    program     static                          
-        ___while_lbl00106   0x000786    program     static                          
-        ___while_lbl00107   0x0007a0    program     static                          
-              __tmplbl_11   0x0007ac    program     static                          
-              __tmplbl_10   0x0007b2    program     static                          
-        ___while_lbl00110   0x0007b6    program     static                          
-        ___while_lbl00111   0x00084a    program     static                          
-        ___while_lbl00112   0x00084e    program     static                          
-           ___if_lbl00114   0x000856    program     static                          
-        ___while_lbl00113   0x000856    program     static                          
-        ___while_lbl00108   0x000858    program     static                          
-        ___while_lbl00115   0x00085a    program     static                          
-              __tmplbl_45   0x00089e    program     static                          
-              __tmplbl_12   0x0008ae    program     static                          
-              __tmplbl_13   0x0008ca    program     static                          
-           ___if_lbl00117   0x0008ce    program     static                          
-              __tmplbl_14   0x0008e0    program     static                          
-           ___if_lbl00118   0x0008e4    program     static                          
-              __tmplbl_15   0x0008f6    program     static                          
-           ___if_lbl00119   0x0008fa    program     static                          
-           ___if_lbl00120   0x00091e    program     static                          
-           ___if_lbl00121   0x00091e    program     static                          
-              __tmplbl_17   0x00094c    program     static                          
-              __tmplbl_16   0x000952    program     static                          
-        ___while_lbl00123   0x000958    program     static                          
-        ___while_lbl00124   0x00095a    program     static                          
-         ___else_lbl00128   0x00095c    program     static                          
-              __tmplbl_19   0x000968    program     static                          
-              __tmplbl_18   0x00096e    program     static                          
-           ___if_lbl00126   0x000978    program     static                          
-           ___if_lbl00127   0x000978    program     static                          
-           ___if_lbl00129   0x000978    program     static                          
-              __tmplbl_21   0x00097e    program     static                          
-              __tmplbl_20   0x00098a    program     static                          
-         ___else_lbl00133   0x0009a8    program     static                          
-           ___if_lbl00131   0x0009f2    program     static                          
-           ___if_lbl00132   0x0009f2    program     static                          
-              __tmplbl_22   0x000a0c    program     static                          
-         ___else_lbl00136   0x000a22    program     static                          
-              __tmplbl_23   0x000a3e    program     static                          
-           ___if_lbl00134   0x000a50    program     static                          
-           ___if_lbl00135   0x000a50    program     static                          
-           ___if_lbl00137   0x000a5a    program     static                          
-         ___else_lbl00139   0x000b86    program     static                          
-           ___if_lbl00138   0x000c64    program     static                          
-         ___else_lbl00141   0x000c86    program     static                          
-           ___if_lbl00140   0x000cb8    program     static                          
-           ___if_lbl00142   0x000cb8    program     static                          
-         ___else_lbl00144   0x000d0a    program     static                          
-           ___if_lbl00143   0x000d16    program     static                          
-           ___if_lbl00145   0x000d54    program     static                          
-           ___if_lbl00146   0x000d70    program     static                          
-           ___if_lbl00147   0x000d76    program     static                          
-           ___if_lbl00148   0x000d80    program     static                          
-           ___if_lbl00149   0x000d8a    program     static                          
-           ___if_lbl00150   0x000d94    program     static                          
-        ___while_lbl00116   0x000d98    program     static                          
-       ___return_lbl00100   0x000d98    program     static                          
-                   __pa_0   0x000dac    program     static /fred/ctouch/ctouch8722.c
-              __tmplbl_40   0x000db6    program     static                          
-              __tmplbl_39   0x000db6    program     static                          
-              __tmplbl_38   0x000db6    program     static                          
-              __tmplbl_35   0x000db6    program     static                          
-              __tmplbl_32   0x000db6    program     static                          
-              __tmplbl_31   0x000db6    program     static                          
-                   __pa_1   0x000db6    program     static /fred/ctouch/ctouch8722.c
-                   __pa_2   0x000dbe    program     static /fred/ctouch/ctouch8722.c
-                   __pa_3   0x000dc6    program     static /fred/ctouch/ctouch8722.c
-                   __pa_4   0x000dd8    program     static /fred/ctouch/ctouch8722.c
-                   __pa_5   0x000de4    program     static /fred/ctouch/ctouch8722.c
-                   __pa_6   0x000df4    program     static /fred/ctouch/ctouch8722.c
-                   __pa_7   0x000dfc    program     static /fred/ctouch/ctouch8722.c
-                   __pa_8   0x000e0a    program     static /fred/ctouch/ctouch8722.c
-                   __pa_9   0x000e18    program     static /fred/ctouch/ctouch8722.c
-                  __pa_10   0x000e26    program     static /fred/ctouch/ctouch8722.c
-                  __pa_11   0x000e30    program     static /fred/ctouch/ctouch8722.c
-                  __pa_12   0x000e3c    program     static /fred/ctouch/ctouch8722.c
-              __tmplbl_43   0x000e3c    program     static                          
-                 FLO0832U   0x000e48    program     extern C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
-                 FLO0832S   0x000e4c    program     extern C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
-                jI2F08Beg   0x000e56    program     static C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
-                 FLO1632U   0x000e6a    program     extern C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
-                 FLO1632S   0x000e6e    program     extern C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
-                jI2F16Beg   0x000e7e    program     static C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
-                    FPM32   0x000e94    program     extern C:\MCC18\v3_39\src\traditional\math\mulFP.asm
-                 jANotInf   0x000eb2    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
-              jBothFinite   0x000ec0    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
-                jHaveZero   0x000ec8    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
-             jBothNotZero   0x000ecc    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
-                 FXD3232S   0x000f6e    program     extern C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                  DA3232S   0x000f88    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                   D3232S   0x000f9e    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                 D3232SOK   0x000fa8    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                D3232SNEG   0x000fac    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                  D3232SX   0x000fcc    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
-                  INT3216   0x000fd6    program     extern C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                     jMax   0x000fe6    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                  jMaxPos   0x000fea    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                  jMaxNeg   0x000ff4    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                    jZero   0x000ffc    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                  jNotInf   0x001002    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                    jLoop   0x001012    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                jLoopExit   0x001022    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-                    jExit   0x001032    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
-            __FpReturnNaN   0x001034    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-                 __FpExit   0x001040    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-        __FpReturnSignInf   0x001042    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-         __FpReturnNegInf   0x001046    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-         __FpReturnPosInf   0x00104c    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-           jReturnPosInf0   0x001050    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-               jZero1and2   0x001054    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-       __FpReturnSignZero   0x00105a    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-        __FpReturnNegZero   0x00105e    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-        __FpReturnPosZero   0x001066    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-                 __FpPack   0x00106c    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-                  jPkLoop   0x00107a    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-             jPkShiftDone   0x001096    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-               jPkRoundIt   0x0010ac    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-              __FpReturnW   0x0010c4    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
-             jPkRoundDone   0x0010c4    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
-              __FpUnPackA   0x0010e4    program     extern C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                  jUnpkA1   0x0010ee    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                 jUnpkANZ   0x0010fc    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                  jUnpkA2   0x001106    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                 jUnpkNaN   0x001110    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-              __FpUnPackB   0x001114    program     extern C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                  jUnpkB1   0x00111e    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                 jUnpkBNZ   0x00112c    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                  jUnpkB2   0x001136    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
-                _do_cinit   0x001140    program     extern C:\MCC18\v3_39\src\traditional\startup\c018iz.c
-                     test   0x00115a    program     static                          
-                copy_loop   0x0011b2    program     static                          
-            copy_one_byte   0x0011b8    program     static                          
-             done_copying   0x0011c6    program     static                          
-                     done   0x0011dc    program     static                          
-       ___return_lbl00002   0x0011dc    program     static                          
-               Open2USART   0x0011de    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2open.c
-               Open1USART   0x001268    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1open.c
-              Write_b_eep   0x0012ec    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\write_B.c
-               Read_b_eep   0x00134c    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\read_B.c
-       ___return_lbl00000   0x00139c    program     static                          
-                 FXD3232U   0x0013a8    program     extern C:\MCC18\v3_39\src\traditional\math\fxd3232u.c
-                     loop   0x0013b6    program     static                          
-                   _false   0x0013ea    program     static                          
-       ___return_lbl00000   0x0013ee    program     static                          
-               Read2USART   0x0013f0    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2read.c
-               Read1USART   0x00142e    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1read.c
-              WriteTimer0   0x00146c    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0write.c
-               OpenTimer0   0x0014a4    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0open.c
-             Delay10KTCYx   0x0014dc    program     extern C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-                    D10Kx   0x0014e6    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-                   D10K_1   0x0014e8    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_0010   0x0014ec    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-                    D10Kl   0x0014f4    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_001C   0x0014f8    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
-              Write2USART   0x00150a    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2write.c
-              Write1USART   0x001538    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1write.c
-                 _startup   0x001566    program     extern C:\MCC18\v3_39\src\traditional\startup\c018iz.c
-                     loop   0x00157a    program     static                          
-       ___return_lbl00001   0x001584    program     static                          
-            __zero_memory   0x001586    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
-                   loop_h   0x001594    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
-               zero_block   0x001594    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
-                compare_l   0x00159c    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
-                   loop_l   0x00159e    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
-               __string_1   0x0015a6    program     static /fred/ctouch/ctouch8722.c
-               __string_0   0x0015af    program     static /fred/ctouch/ctouch8722.c
-                 Busy_eep   0x0015bc    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\busy_eep.c
-                  corners   0x0015c2    program     extern /fred/ctouch/ctouch.h    
+                    putc2   0x0005dc    program     extern /fred/ctouch/ctouch8722.c
+              start_delay   0x0005f2    program     extern /fred/ctouch/ctouch8722.c
+                emu_delay   0x0005fc    program     extern /fred/ctouch/ctouch8722.c
+              Test_Screen   0x000608    program     extern /fred/ctouch/ctouch8722.c
+                     main   0x000636    program     extern /fred/ctouch/ctouch8722.c
+           ___if_lbl00102   0x0006f0    program     static                          
+           ___if_lbl00103   0x000728    program     static                          
+           ___if_lbl00104   0x000748    program     static                          
+        ___while_lbl00105   0x000792    program     static                          
+        ___while_lbl00106   0x00079c    program     static                          
+        ___while_lbl00107   0x00079c    program     static                          
+        ___while_lbl00108   0x0007a6    program     static                          
+        ___while_lbl00109   0x0007c0    program     static                          
+              __tmplbl_11   0x0007cc    program     static                          
+              __tmplbl_10   0x0007d2    program     static                          
+        ___while_lbl00112   0x0007d6    program     static                          
+        ___while_lbl00113   0x00086a    program     static                          
+        ___while_lbl00114   0x00086e    program     static                          
+           ___if_lbl00116   0x000876    program     static                          
+        ___while_lbl00115   0x000876    program     static                          
+        ___while_lbl00110   0x000878    program     static                          
+        ___while_lbl00117   0x00087a    program     static                          
+              __tmplbl_47   0x0008b6    program     static                          
+              __tmplbl_12   0x0008c6    program     static                          
+              __tmplbl_13   0x0008e2    program     static                          
+           ___if_lbl00119   0x0008e6    program     static                          
+              __tmplbl_14   0x0008f8    program     static                          
+           ___if_lbl00120   0x0008fc    program     static                          
+              __tmplbl_15   0x00090e    program     static                          
+           ___if_lbl00121   0x000912    program     static                          
+           ___if_lbl00123   0x000936    program     static                          
+           ___if_lbl00122   0x000936    program     static                          
+              __tmplbl_17   0x000964    program     static                          
+              __tmplbl_16   0x00096a    program     static                          
+        ___while_lbl00125   0x000970    program     static                          
+        ___while_lbl00126   0x000972    program     static                          
+         ___else_lbl00130   0x000974    program     static                          
+              __tmplbl_19   0x000980    program     static                          
+              __tmplbl_18   0x000986    program     static                          
+           ___if_lbl00131   0x000990    program     static                          
+           ___if_lbl00129   0x000990    program     static                          
+           ___if_lbl00128   0x000990    program     static                          
+              __tmplbl_21   0x000996    program     static                          
+              __tmplbl_20   0x0009a2    program     static                          
+         ___else_lbl00135   0x0009c0    program     static                          
+           ___if_lbl00133   0x000a0a    program     static                          
+           ___if_lbl00134   0x000a0a    program     static                          
+              __tmplbl_22   0x000a24    program     static                          
+         ___else_lbl00138   0x000a3a    program     static                          
+              __tmplbl_23   0x000a56    program     static                          
+           ___if_lbl00136   0x000a68    program     static                          
+           ___if_lbl00137   0x000a68    program     static                          
+           ___if_lbl00139   0x000a72    program     static                          
+         ___else_lbl00141   0x000b9e    program     static                          
+           ___if_lbl00140   0x000c7c    program     static                          
+         ___else_lbl00143   0x000c9e    program     static                          
+           ___if_lbl00142   0x000cd0    program     static                          
+           ___if_lbl00144   0x000cd0    program     static                          
+         ___else_lbl00146   0x000d22    program     static                          
+           ___if_lbl00145   0x000d2e    program     static                          
+           ___if_lbl00147   0x000d6c    program     static                          
+           ___if_lbl00148   0x000d88    program     static                          
+           ___if_lbl00149   0x000d8e    program     static                          
+           ___if_lbl00150   0x000d98    program     static                          
+           ___if_lbl00151   0x000da2    program     static                          
+           ___if_lbl00152   0x000dac    program     static                          
+       ___return_lbl00101   0x000db0    program     static                          
+        ___while_lbl00118   0x000db0    program     static                          
+                   __pa_0   0x000dc4    program     static /fred/ctouch/ctouch8722.c
+                   __pa_1   0x000dce    program     static /fred/ctouch/ctouch8722.c
+              __tmplbl_42   0x000dce    program     static                          
+              __tmplbl_40   0x000dce    program     static                          
+              __tmplbl_39   0x000dce    program     static                          
+              __tmplbl_38   0x000dce    program     static                          
+              __tmplbl_35   0x000dce    program     static                          
+              __tmplbl_32   0x000dce    program     static                          
+              __tmplbl_31   0x000dce    program     static                          
+                   __pa_2   0x000dd6    program     static /fred/ctouch/ctouch8722.c
+                   __pa_3   0x000dde    program     static /fred/ctouch/ctouch8722.c
+                   __pa_4   0x000df0    program     static /fred/ctouch/ctouch8722.c
+                   __pa_5   0x000dfc    program     static /fred/ctouch/ctouch8722.c
+                   __pa_6   0x000e0c    program     static /fred/ctouch/ctouch8722.c
+                   __pa_7   0x000e14    program     static /fred/ctouch/ctouch8722.c
+                   __pa_8   0x000e22    program     static /fred/ctouch/ctouch8722.c
+                   __pa_9   0x000e30    program     static /fred/ctouch/ctouch8722.c
+                  __pa_10   0x000e3e    program     static /fred/ctouch/ctouch8722.c
+              __tmplbl_44   0x000e3e    program     static                          
+              __tmplbl_45   0x000e3e    program     static                          
+                  __pa_11   0x000e40    program     static /fred/ctouch/ctouch8722.c
+                  __pa_12   0x000e4a    program     static /fred/ctouch/ctouch8722.c
+                  __pa_13   0x000e56    program     static /fred/ctouch/ctouch8722.c
+                 FLO0832U   0x000e62    program     extern C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
+                 FLO0832S   0x000e66    program     extern C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
+                jI2F08Beg   0x000e70    program     static C:\MCC18\v3_39\src\traditional\math\cast08FP.asm
+                 FLO1632U   0x000e84    program     extern C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
+                 FLO1632S   0x000e88    program     extern C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
+                jI2F16Beg   0x000e98    program     static C:\MCC18\v3_39\src\traditional\math\cast16FP.asm
+                    FPM32   0x000eae    program     extern C:\MCC18\v3_39\src\traditional\math\mulFP.asm
+                 jANotInf   0x000ecc    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
+              jBothFinite   0x000eda    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
+                jHaveZero   0x000ee2    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
+             jBothNotZero   0x000ee6    program     static C:\MCC18\v3_39\src\traditional\math\mulFP.asm
+                 FXD3232S   0x000f88    program     extern C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                  DA3232S   0x000fa2    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                   D3232S   0x000fb8    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                 D3232SOK   0x000fc2    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                D3232SNEG   0x000fc6    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                  D3232SX   0x000fe6    program     static C:\MCC18\v3_39\src\traditional\math\fxd3232s.asm
+                  INT3216   0x000ff0    program     extern C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                     jMax   0x001000    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                  jMaxPos   0x001004    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                  jMaxNeg   0x00100e    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                    jZero   0x001016    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                  jNotInf   0x00101c    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                    jLoop   0x00102c    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                jLoopExit   0x00103c    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+                    jExit   0x00104c    program     static C:\MCC18\v3_39\src\traditional\math\castFP16.asm
+            __FpReturnNaN   0x00104e    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+                 __FpExit   0x00105a    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+        __FpReturnSignInf   0x00105c    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+         __FpReturnNegInf   0x001060    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+         __FpReturnPosInf   0x001066    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+           jReturnPosInf0   0x00106a    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+               jZero1and2   0x00106e    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+       __FpReturnSignZero   0x001074    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+        __FpReturnNegZero   0x001078    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+        __FpReturnPosZero   0x001080    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+                 __FpPack   0x001086    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+                  jPkLoop   0x001094    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+             jPkShiftDone   0x0010b0    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+               jPkRoundIt   0x0010c6    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+              __FpReturnW   0x0010de    program     extern C:\MCC18\v3_39\src\traditional\math\packFP.asm
+             jPkRoundDone   0x0010de    program     static C:\MCC18\v3_39\src\traditional\math\packFP.asm
+              __FpUnPackA   0x0010fe    program     extern C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                  jUnpkA1   0x001108    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                 jUnpkANZ   0x001116    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                  jUnpkA2   0x001120    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                 jUnpkNaN   0x00112a    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+              __FpUnPackB   0x00112e    program     extern C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                  jUnpkB1   0x001138    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                 jUnpkBNZ   0x001146    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                  jUnpkB2   0x001150    program     static C:\MCC18\v3_39\src\traditional\math\UnpackFP.asm
+                _do_cinit   0x00115a    program     extern C:\MCC18\v3_39\src\traditional\startup\c018iz.c
+                     test   0x001174    program     static                          
+                copy_loop   0x0011cc    program     static                          
+            copy_one_byte   0x0011d2    program     static                          
+             done_copying   0x0011e0    program     static                          
+                     done   0x0011f6    program     static                          
+       ___return_lbl00002   0x0011f6    program     static                          
+               Open2USART   0x0011f8    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2open.c
+               Open1USART   0x001282    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1open.c
+              Write_b_eep   0x001306    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\write_B.c
+               Read_b_eep   0x001366    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\read_B.c
+       ___return_lbl00000   0x0013b6    program     static                          
+                 FXD3232U   0x0013c2    program     extern C:\MCC18\v3_39\src\traditional\math\fxd3232u.c
+                     loop   0x0013d0    program     static                          
+                   _false   0x001404    program     static                          
+       ___return_lbl00000   0x001408    program     static                          
+               Read2USART   0x00140a    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2read.c
+               Read1USART   0x001448    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1read.c
+              WriteTimer0   0x001486    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0write.c
+               OpenTimer0   0x0014be    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0open.c
+             Delay10KTCYx   0x0014f6    program     extern C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+                    D10Kx   0x001500    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+                   D10K_1   0x001502    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_0010   0x001506    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+                    D10Kl   0x00150e    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x001512    program     static C:\MCC18\v3_39\src\traditional\delays\d10ktcyx.asm
+              Write2USART   0x001524    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u2write.c
+              Write1USART   0x001552    program     extern C:\MCC18\v3_39\src\pmc_common\USART\u1write.c
+                 _startup   0x001580    program     extern C:\MCC18\v3_39\src\traditional\startup\c018iz.c
+                     loop   0x001594    program     static                          
+       ___return_lbl00001   0x00159e    program     static                          
+            __zero_memory   0x0015a0    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
+                   loop_h   0x0015ae    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
+               zero_block   0x0015ae    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
+                compare_l   0x0015b6    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
+                   loop_l   0x0015b8    program     static C:\MCC18\v3_39\src\traditional\proc\p18F8722.asm
+               __string_1   0x0015c0    program     static /fred/ctouch/ctouch8722.c
+               __string_0   0x0015c9    program     static /fred/ctouch/ctouch8722.c
+                 Busy_eep   0x0015d6    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\busy_eep.c
+                  corners   0x0015dc    program     extern /fred/ctouch/ctouch.h    
                __config_0   0x300001    program     static /fred/ctouch/ctouch8722.c
                __config_1   0x300002    program     static /fred/ctouch/ctouch8722.c
                __config_2   0x300003    program     static /fred/ctouch/ctouch8722.c
