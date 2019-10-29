@@ -106,8 +106,8 @@
  * VGA converter box relay
  * Omron 
  * G6k-2P bottom view
- * Pin		8 - gnd, wire tag 0, to RELAY output	pin 2 on connector for RA1, RE1 PORT OUTPUT
- * Pin		1 + 5vdc,		Power PIN	pin 9 connector for RA or RE PORT VCC		 
+ * Pin		1 -  relay voltage, wire tag 0, to RELAY output	pin 2 on connector for RA1, RE1 PORT OUTPUT
+ * Pin		8   gnd,		Ground PIN	pin 10 connector for RA or RE PORT GND		 
  */
 //				***
 //				E0.94		Clean up the code and comments
@@ -140,6 +140,7 @@
 //				E1.22		Support for SmartSet commands on newer touch panels
 //				E1.23		refactor
 //				E1.24		adjust newer screen size for better touch fit
+//				E1.25		Screen type jumper input PG0 = 0 is accutouch, PG0 = 1 carroltouch. PG3 set to high level for jumper input to PG0
 //				***
 
 #include <usart.h>
@@ -149,22 +150,7 @@
 #include <EEP.h>
 #include <timers.h>
 #include <GenericTypeDefs.h>
-
-#ifdef INTTYPES
-#include <stdint.h>
-#else
-#define INTTYPES
-/*unsigned types*/
-typedef unsigned char uint8_t;
-typedef unsigned int uint16_t;
-typedef unsigned long uint32_t;
-typedef unsigned long long uint64_t;
-/*signed types*/
-typedef signed char int8_t;
-typedef signed int int16_t;
-typedef signed long int32_t;
-typedef signed long long int64_t;
-#endif
+#include "ctouch.h"
 
 void rx_handler(void);
 
@@ -623,6 +609,7 @@ void main(void)
 	float rez_scale_h_ss = ELO_SS_H_SCALE, rez_scale_v_ss = ELO_SS_V_SCALE;
 
 	/* Configure all LAT B,E,H,J pins for output */
+	TRISG = 0; // PG0 outputs
 	TRISJ = 0;
 	TRISH = 0;
 	TRISE = 0;
@@ -632,6 +619,8 @@ void main(void)
 	TRISD = 0xff; // debug function removed
 	PORTH = 0;
 	LATE = 0;
+	LATGbits.LATG0 = 1; //set input reads to high unless jumper is on
+	do_emu_ss = PORTGbits.RG0;
 	CAM_RELAY_TIME = 0;
 	CAM_RELAY = 0;
 	touch_count = 0;
@@ -765,8 +754,6 @@ void main(void)
 				};
 			};
 
-
-
 			if (LED_UP && (alive_led != 0)) {
 				alive_led = alive_led * 2;
 			} else {
@@ -793,7 +780,7 @@ void main(void)
 			if (CATCH) { // send the buffered touch report
 				Delay10KTCYx(75); // 75 ms
 				putc1(0xFE); // send position report header to host
-				if (do_emu_ss) {
+				if (do_emu_ss) {// Parse the SmartSet packet data
 					ssreport.tohost = TRUE;
 					rez_parm_h = ((float) (ssreport.x_cord)) * rez_scale_h_ss;
 					rez_parm_v = ((float) (ssreport.y_cord)) * rez_scale_v_ss;
@@ -804,7 +791,7 @@ void main(void)
 					scaled_char = ((uint16_t) (rez_parm_v));
 					elobuf[1] = scaled_char;
 					putc1(scaled_char); // send v scaled touch coord
-				} else {
+				} else {// Parse the CarrolTouch Packet data
 					rez_parm_h = ((float) (elobuf[0])) * rez_scale_h;
 					scaled_char = ((uint16_t) (rez_parm_h));
 					putc1(scaled_char); // send h scaled touch coord
@@ -832,7 +819,7 @@ void main(void)
 			rez_scale_h = 1.0; // LCD touch screen real H/V rez
 			rez_scale_v = 1.0;
 			if (do_emu_ss) {
-				//elopacketout(elocodes_e5, ELO_SEQ, 0); // send a ACk query
+				//elopacketout(elocodes_e5, ELO_SEQ, 0); // send a ACK query
 			} else {
 				putc2(0x3D); // send clear buffer to touch
 			}
@@ -851,7 +838,7 @@ void main(void)
 		};
 
 		if (TOUCH) {
-			// do nothing now.
+			// do nothing for now.
 		};
 
 		if (NEEDSETUP) setup_lcd(); // send lcdsetup codes to screen
